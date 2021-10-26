@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="author" content="colorlib.com">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sign Up Form</title>
+
+    <!-- Font Icon -->
+    <link rel="stylesheet" href="fonts/material-icon/css/material-design-iconic-font.min.css">
+
+    <!-- Main css -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <div class="main">
+
+        <div class="container">
+            <h2>Sign up to great new account </h2>
+            <form method="POST" id="signup-form" class="signup-form">
+                <h3>
+                    <span class="title_text">Lab Details</span>
+                </h3>
+                <fieldset>
+                    <div class="fieldset-content">
+                        <div class="form-group">
+                            <label for="labname" class="form-label">Lab Name</label>
+                            <input type="text" name="labname" id="labname" placeholder="Lab Name" />
+                        </div>
+                        <div class="form-group">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" name="email" id="email" placeholder="Your Email" />
+                        </div>
+                        <div class="form-group">
+                            <label for="phone" class="form-label">Phone Number</label>
+                            <input type="number" name="phone" id="phone" placeholder="Phone Number" />
+                        </div>
+
+                        <div class="form-select">
+                            <label for="district" class="form-label">Distict</label>
+                            <select name="district" id="district">
+                                <option value="">District Of Lab </option>
+                                <option value="Kasargode">kasargode</option>
+                                <option value="Kannur">Kannur</option>
+                                <option value="Kozhikode">Kozhikode</option>
+                                <option value="Wayanade">Wayanade</option>
+                                <option value="Malappuram">Malappuram</option>
+                                <option value="Thrissur">Thrissur</option>
+                                <option value="Palakkad">Palakkad</option>
+                                <option value="Eranakulam">Eranakulam</option>
+                                <option value="Alappuzha">Alappuzha</option>
+                                <option value="Idukki">Idukki</option>
+                                <option value="Kottayam">Kottayam</option>
+                                <option value="Pattanamtitta">Pattanamtitta</option>
+                                <option value="Kollam">Kollam</option>
+                                <option value="Trivandrum">Trivandrum</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="lb_address" class="form-label">Address</label>
+                            <textarea name="lb_address" id="lb_address" placeholder="Enter Address"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="reg_no" class="form-label">Provisional Registration Number</label>
+                            <input type="text" name="reg_no" id="reg_no" placeholder="Registration Number" />
+                        </div>
+                        <div class="form-group">
+                            <label for="expiry_date">Date Of Issue</label>
+                            <div class="form-flex">
+                                <div class="form-date-item">
+                                    <select id="expiry_date" name="expiry_date"></select>
+                                    <span class="select-icon"><i class="zmdi zmdi-chevron-down"></i></span>
+                                </div>
+                                <div class="form-date-item">
+                                  <select id="expiry_month" name="expiry_month"></select>
+                                  <span class="select-icon"><i class="zmdi zmdi-chevron-down"></i></span>
+                                </div>
+                                <div class="form-date-item">
+                                    <select id="expiry_year" name="expiry_year"></select>
+                                    <span class="select-icon"><i class="zmdi zmdi-chevron-down"></i></span>
+                                </div>
+                            </div>
+                        </div>
+                      
+                        <div class="form-group">
+                            <label for="your_avatar" class="form-label">Provisional Certificate</label>
+                            <div class="form-file">
+                                <input type="file" name="certificate" id="certificate" class="custom-file-input" placeholder="Upload PDF" />
+                                <span id='val'></span>
+                                <span id='button'>Select File</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="fieldset-footer">
+                        <span>Step 1 of 3</span>
+                    </div>
+                </fieldset>
+
+                <h3>
+                    <span class="title_text">Owner & Staff Information</span>
+                </h3>
+                <fieldset>
+
+                    <div class="fieldset-content">
+                        <div class="form-group">
+                            <label for="full_name" class="form-label">Full name</label>
+                            <input type="text" name="full_name" id="full_name" placeholder="Owner Full Name" />
+                        </div>
+    
+                        <div class="form-radio">
+                            <label for="gender" class="form-label">Gender</label>
+                            <div class="form-radio-item">
+                                <input type="radio" name="gender" value="male" id="male" checked="checked" />
+                                <label for="male">Male</label>
+    
+                                <input type="radio" name="gender" value="female" id="female" />
+                                <label for="female">Female</label>
+                            </div>
+                        </div>
+    
+                        <div class="form-textarea">
+                            <label for="about_us" class="form-label">Address</label>
+                            <textarea name="about_us" id="about_us" placeholder="Enter Address"></textarea>
+                        </div>
+                        <div class="form-select">
+                            <label for="country" class="form-label">ID PROOF</label>
+                            <select name="country" id="country">
+                                <option value="">Country</option>
+                                <option value="Kasargode">AADHAR CARD</option>
+                                <option value="Kannur">ELECTION ID CARD</option>
+                                <option value="Kozhikode">DRIVING LICENCE</option>
+                                <option value="Kannur">PAN CARD</option>
+                            
+                            </select>
+                        </div>
+
+
+                            <div class="form-group">
+                                <label for="id-proof" class="form-label">Upload ID Proof</label>
+                                <div class="form-file">
+                                    <input type="file" name="id_proof" id="id-proof" class="custom-file-input" placeholder="Upload PDF" />
+                                    <span id='val'></span>
+                                    <span id='button'>Select PDF</span>
+                                </div>
+                            </div>
+
+                       
+    
+                    </div>
+
+                    <div class="fieldset-footer">
+                        <span>Step 2 of 3</span>
+                    </div>
+
+                </fieldset>
+
+                <h3>
+                    <span class="title_text">Account Details</span>
+                </h3>
+                <fieldset>
+                  
+                    <div class="fieldset-content">
+                        
+                        <div class="form-group">
+                            <label for="user-name" class="form-label">User Name</label>
+                            <input type="text" name="user-name" id="user-name" />
+                        </div>
+
+                        <div class="form-group form-password">
+                            <label for="password" class="form-label">Password</label>
+                            <input type="password" name="password" id="password" data-indicator="pwindicator" />
+                            <div id="pwindicator">
+                                <div class="bar-strength">
+                                    <div class="bar-process">
+                                        <div class="bar"></div>
+                                    </div>
+                                </div>
+                                <div class="label"></div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="re-password" class="form-label">Re-Enter Password</label>
+                            <input type="password" name="re-password" id="re-password" />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="prof-ph" class="form-label">Upload Profile Photo</label>
+                            <div class="form-file">
+                                <input type="file" name="prof-ph" id="prof-ph" class="custom-file-input" placeholder="Upload Photo" />
+                                <span id='val'></span>
+                                <span id='button'>Upload Photo</span>
+                            </div>
+                        </div>
+                                    
+                    </div>
+
+                    <div class="fieldset-footer">
+                        <span>Step 3 of 3</span>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+
+    </div>
+
+    <!-- JS -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="vendor/jquery-validation/dist/additional-methods.min.js"></script>
+    <script src="vendor/jquery-steps/jquery.steps.min.js"></script>
+    <script src="vendor/minimalist-picker/dobpicker.js"></script>
+    <script src="vendor/jquery.pwstrength/jquery.pwstrength.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>
