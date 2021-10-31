@@ -1,12 +1,20 @@
 <!DOCTYPE html>
 <html style="font-size: 16px;">
+<?php include_once '../header/header.php' ?>
+
+<?php
+if(!isset($_SESSION['superadmin'])){ //checking session check variable
+
+    header("Location:../login/login.php");
+}
+?>
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
     <meta name="keywords" content="ocean, ​VR's Surprising Benefits">
     <meta name="description" content="">
     <meta name="page_type" content="np-template-header-footer-from-plugin">
-    <title>virtual 1</title>
+    <title>Admin Dashboard</title>
     <link rel="stylesheet" href="nicepage.css" media="screen">
 <link rel="stylesheet" href="virtual-1.css" media="screen">
     <script class="u-script" type="text/javascript" src="jquery-1.9.1.min.js" defer=""></script>
@@ -14,8 +22,8 @@
     <meta name="generator" content="Nicepage 3.29.3, nicepage.com">
     <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i|Cambay:400,400i,700,700i">
     <link id="u-page-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i|Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i">
-    
-    
+
+
     <script type="application/ld+json">{
 		"@context": "http://schema.org",
 		"@type": "Organization",
@@ -26,11 +34,9 @@
     <meta property="og:title" content="virtual 1">
     <meta property="og:type" content="website">
   </head>
-  <body data-home-page="https://website914903.nicepage.io/virtual-1.html?version=2512b8cf-b915-47a6-af16-5cdfeae73429" data-home-page-title="virtual 1" class="u-body"><header class="u-clearfix u-header u-header" id="sec-d9ff"><div class="u-clearfix u-sheet u-sheet-1">
-        <a href="https://nicepage.com" class="u-image u-logo u-image-1">
-          <img src="images/3d1cb46b-c73f-44c9-a49f-f830531c72dd.png" class="u-logo-image u-logo-image-1">
-        </a>
-      </div></header> 
+
+
+  <body data-home-page="https://website914903.nicepage.io/virtual-1.html?version=2512b8cf-b915-47a6-af16-5cdfeae73429" data-home-page-title="virtual 1" class="u-body">
     <section class="u-align-center u-clearfix u-palette-2-base u-section-1" id="carousel_d409">
       <div class="u-clearfix u-sheet u-sheet-1">
         <h1 class="u-text u-text-default u-text-1">ADMIN DASHBOARD</h1>
@@ -65,21 +71,11 @@
         </div>
       </div>
     </section>
-    
-    
+
+
     <footer class="u-align-center u-clearfix u-footer u-grey-80 u-footer" id="sec-0fc3"><div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
         <p class="u-small-text u-text u-text-variant u-text-1">ARUN BABY</p>
       </div></footer>
-    <section class="u-backlink u-clearfix u-grey-80">
-      <a class="u-link" href="website-design" target="_blank">
-        <span>Website Design</span>
-      </a>
-      <p class="u-text">
-        <span>created with</span>
-      </p>
-      <a class="u-link" href="html-website-builder" target="_blank">
-        <span>HTML Layout generator</span>
-      </a>. 
-    </section>
+
   </body>
 </html>

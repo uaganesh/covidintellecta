@@ -36,6 +36,9 @@
     <link id="cus-style" rel="stylesheet" href="assets/css/style-primary.css">
 
 </head>
+<?php
+include_once '../header/header.php'
+?>
 
 <body>
 
@@ -56,10 +59,10 @@
                             </div>
 
                             <div class="login-register-form">
-                                <form action="#">
+                                <form action="../includes/loginscript.php" method="POST">
                                     <div class="row">
-                                        <div class="col-12 mb-20"><input class="form-control" type="text" placeholder="User ID / Email"></div>
-                                        <div class="col-12 mb-20"><input class="form-control" type="password" placeholder="Password"></div>
+                                        <div class="col-12 mb-20"><input class="form-control" type="text" name="username" placeholder="User ID / Email"></div>
+                                        <div class="col-12 mb-20"><input class="form-control" type="password" name="password" placeholder="Password"></div>
                                         <div class="col-12 mb-20"><label for="remember" class="adomx-checkbox-2"><input id="remember" type="checkbox"><i class="icon"></i>Remember.</label></div>
                                         <div class="col-12">
                                             <div class="row justify-content-between">
@@ -67,10 +70,46 @@
                                                 <div class="col-auto mb-15">Dont have account? <a href="register.html">Create Now.</a></div>
                                             </div>
                                         </div>
-                                        <div class="col-12 mt-10"><button class="button button-primary button-outline">sign in</button></div>
+                                        <div class="col-12 mt-10"><button name="submit" class="button button-primary button-outline">sign in</button></div>
                                     </div>
                                 </form>
                             </div>
+                            <?php
+                                    if(isset($_GET["error"]))
+                       								{
+                      									  if($_GET["error"]=="emptyinput")
+                      									  {
+                       											 echo "<br><p style='color:red; text-align:center; font-size: 20px; font-weight:bold;'>Fill username and password!</p>";
+                      									  }
+                     								      else if($_GET["error"]=="wronglogin")
+                       									  {
+                      											  echo "<br><p style='color:red; text-align:center; font-size: 20px; font-weight:bold;'>Username Doesn't Exist!</p>";
+                      									  }
+
+                      									  else if($_GET["error"]=="wrongloginpassword")
+                       								  	{
+                      											  echo "<br><p style='color:red; text-align:center; font-size: 20px; font-weight:bold;'>Incorrect Password!</p>";
+                      									  }
+                												  else if($_GET["error"]=="disabled")
+                       								  	{
+                      											  echo "<br><p style='color:red; text-align:center; font-size: 20px; font-weight:bold;'>Account is Blocked !</br>  Contact Support Team </p>";
+                      									  }
+                                          else if($_GET["error"]=="useridnotexist")
+                                          {
+                                            echo "<br><p style='color:red; text-align:center; font-size: 20px; font-weight:bold;'>User Id Doesn't Exist</p>";
+                                          }
+                                      }
+
+                	                         if(isset($_GET["newpwd"]))
+                	       								   {
+                	      									 if($_GET["newpwd"]=="passwordupdated")
+                	      									 {
+                	       											 echo "<br><p style='color:red; text-align:center; font-size: 20px; font-weight:bold;'>Password Updated!</p>";
+                	      									 }
+
+                	     								}
+
+                	     					?>
                         </div>
                     </div>
 

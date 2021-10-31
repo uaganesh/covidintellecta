@@ -1,12 +1,22 @@
 <!DOCTYPE html>
 <html style="font-size: 16px;">
+
+<?php include_once '../header/header.php' ?>
+
+<?php
+if(!isset($_SESSION['lab'])){ //checking session check variable
+
+    header("Location:../login/login.php");
+}
+?>
   <head>
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
     <meta name="keywords" content="Hosting is even better with all these FREE features">
     <meta name="description" content="">
     <meta name="page_type" content="np-template-header-footer-from-plugin">
-    <title>Page 10</title>
+    <title>Laboratory Dashboard</title>
     <link rel="stylesheet" href="nicepage.css" media="screen">
 <link rel="stylesheet" href="Page-10.css" media="screen">
     <script class="u-script" type="text/javascript" src="jquery-1.9.1.min.js" defer=""></script>
@@ -14,8 +24,8 @@
     <meta name="generator" content="Nicepage 3.29.3, nicepage.com">
     <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i">
     <link id="u-page-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cambo:400">
-    
-    
+
+
     <script type="application/ld+json">{
 		"@context": "http://schema.org",
 		"@type": "Organization",
@@ -25,6 +35,8 @@
     <meta property="og:title" content="Page 10">
     <meta property="og:type" content="website">
   </head>
+
+
   <body data-home-page="https://website914919.nicepage.io/Page-10.html?version=a08161ab-617f-4a0a-813e-b0cb86680aaa" data-home-page-title="Page 10" class="u-body">
     <section class="u-align-center u-clearfix u-gradient u-section-1" id="carousel_afef">
       <div class="u-clearfix u-sheet u-sheet-1">
@@ -60,4 +72,8 @@
       </div>
     </section>
   </body>
+
+
+
+
 </html>

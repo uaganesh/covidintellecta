@@ -1,4 +1,8 @@
 <!DOCTYPE html>
+<?php
+ include_once '../header/header.php'
+ ?>
+
 <html lang="en">
 
 <head>
@@ -7,7 +11,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   <meta name="description" content="Medcity - Medical Healthcare HTML5 Template">
   <link href="assets/images/favicon/favicon.png" rel="icon">
-  <title>Medcity - Medical Healthcare HTML5 Template</title>
+  <title>Covid Intellecta</title>
 
   <link rel="stylesheet"
     href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Roboto:wght@400;700&display=swap">
@@ -22,68 +26,6 @@
       <div class="loading"><span></span><span></span><span></span><span></span></div>
     </div><!-- /.preloader -->
 
-    <!-- =========================
-        Header
-    =========================== -->
-    <header class="header header-layout1">
-
-      <nav class="navbar navbar-expand-lg sticky-navbar">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="index.html">
-            <img src="assets/images/logo/logo-light.png" class="logo-light" alt="logo">
-            <img src="assets/images/logo/logo-dark.png" class="logo-dark" alt="logo">
-          </a>
-          <button class="navbar-toggler" type="button">
-            <span class="menu-lines"><span></span></span>
-          </button>
-          <div class="collapse navbar-collapse" id="mainNavigation">
-            <ul class="navbar-nav ml-auto">
-              <li class="nav__item has-dropdown">
-                <a href="#"  class="dropdown-toggle nav__item-link active">Home</a>
-
-              <li class="nav__item has-dropdown">
-                <a href="#" data-toggle="dropdown" class="dropdown-toggle nav__item-link">About Us</a>
-                <ul class="dropdown-menu">
-                  <li class="nav__item">
-                    <a href="about-us.html" class="nav__item-link">About Us</a>
-                  </li><!-- /.nav-item -->
-                  <li class="nav__item">
-                    <a href="services.html" class="nav__item-link">Our Services</a>
-                  </li><!-- /.nav-item -->
-                  <li class="nav__item">
-                    <a href="services-single.html" class="nav__item-link">single Services</a>
-                  </li><!-- /.nav-item -->
-                  <li class="nav__item">
-                    <a href="pricing.html" class="nav__item-link">Pricing & Plans</a>
-                  </li><!-- /.nav-item -->
-                  <li class="nav__item">
-                    <a href="../login/login.html" class="nav__item-link">Appointments</a>
-                  </li><!-- /.nav-item -->
-                  <li class="nav__item">
-                    <a href="faqs.html" class="nav__item-link">Help & FAQs</a>
-                  </li> <!-- /.nav-item -->
-                  <li class="nav__item">
-                    <a href="gallery.html" class="nav__item-link">Our Gallery</a>
-                  </li><!-- /.nav-item -->
-                </ul><!-- /.dropdown-menu -->
-              </li><!-- /.nav-item -->
-
-
-              <li class="nav__item">
-                <a href="contact-us.html" class="nav__item-link">Contacts</a>
-              </li><!-- /.nav-item -->
-            </ul><!-- /.navbar-nav -->
-            <button class="close-mobile-menu d-block d-lg-none"><i class="fas fa-times"></i></button>
-          </div><!-- /.navbar-collapse -->
-
-            <a href="../login/login.html" class="btn btn__primary btn__rounded ml-30">
-              <i class="icon-calendar"></i>
-              <span>Appointment</span>
-            </a>
-          </div>
-        </div><!-- /.container -->
-      </nav><!-- /.navabr -->
-    </header><!-- /.Header -->
 
     <!-- ============================
         Slider
@@ -208,7 +150,7 @@
                   </div>
                 </div><!-- /.testimonials__rating-inner -->
               </div><!-- /.testimonials__rating -->
-              <a href="../login/login.html" class="btn btn__primary btn__rounded">
+              <a href="../login/login.php" class="btn btn__primary btn__rounded">
                 <span>Make Appointment</span> <i class="icon-arrow-right"></i>
               </a>
             </div><!-- /.info__meta -->
@@ -538,7 +480,7 @@
                 <img src="assets/images/logo/logo-light.png" alt="logo" class="mb-30">
                 <p class="color-gray">Our Mission is to provide safety to the Citizens by preventing misuse of Lab Reports and Spreading Disease Across an Area.
                 </p>
-                <a href="../login/login.html" class="btn btn__primary btn__primary-style2 btn__link">
+                <a href="../login/login.php" class="btn btn__primary btn__primary-style2 btn__link">
                   <span>Make Appointment</span> <i class="icon-arrow-right"></i>
                 </a>
               </div><!-- /.footer-widget__content -->
