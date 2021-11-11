@@ -67,7 +67,7 @@ include_once '../header/header.php'
                                         <div class="col-12">
                                             <div class="row justify-content-between">
                                                 <div class="col-auto mb-15"><a href="#">Forgot Password?</a></div>
-                                                <div class="col-auto mb-15">Dont have account? <a href="register.html">Create Now.</a></div>
+                                                <div class="col-auto mb-15">Dont have account? <a href="../citizenregistration/citizenreg.php">Create Now.</a></div>
                                             </div>
                                         </div>
                                         <div class="col-12 mt-10"><button name="submit" class="button button-primary button-outline">sign in</button></div>

@@ -16,8 +16,8 @@
   <link rel="stylesheet"
     href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Roboto:wght@400;700&display=swap">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css">
-  <link rel="stylesheet" href="../header/assetsheader/css/libraries.css">
-  <link rel="stylesheet" href="../header/assetsheader/css/style.css">
+ <link rel="stylesheet" href="../header/assetsheader/css/libraries.css">
+  <link rel="stylesheet" href="../header/assetsheader/css/header.css">
 </head>
 <body>
 <header class="header header-layout1">
@@ -28,7 +28,7 @@
 
   <nav class="navbar navbar-expand-lg sticky-navbar">
     <div class="container-fluid">
-      <a class="navbar-brand" href="index.html">
+      <a class="navbar-brand" href="../index/index.php">
         <img src="../header/assetsheader/images/logo/logo-light.png" class="logo-light" alt="logo">
         <img src="../header/assetsheader/images/logo/logo-dark.png" class="logo-dark" alt="logo">
       </a>
@@ -41,17 +41,18 @@
             <a href="../index/index.php"  class="dropdown-toggle nav__item-link active">Home</a>
 
           <li class="nav__item has-dropdown">
-            <a href="#" data-toggle="dropdown" class="dropdown-toggle nav__item-link">About Us</a>
+            <a href="#" data-toggle="dropdown" class="dropdown-toggle nav__item-link">More Info</a>
             <ul class="dropdown-menu">
+              <li class="nav__item">
+                <a color="red" href="../labregistration/labreg.php" class="nav__item-link">Lab Registration</a>
+              </li><!-- /.nav-item -->
               <li class="nav__item">
                 <a href="about-us.html" class="nav__item-link">About Us</a>
               </li><!-- /.nav-item -->
               <li class="nav__item">
                 <a href="services.html" class="nav__item-link">Our Services</a>
               </li><!-- /.nav-item -->
-              <li class="nav__item">
-                <a href="services-single.html" class="nav__item-link">single Services</a>
-              </li><!-- /.nav-item -->
+
               <li class="nav__item">
                 <a href="pricing.html" class="nav__item-link">Pricing & Plans</a>
               </li><!-- /.nav-item -->

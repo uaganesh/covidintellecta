@@ -128,7 +128,7 @@ function uidExists($conn , $username ,$email)
 
    if(!mysqli_stmt_prepare($stmt, $sql))
    {
-     header("location: ../registration/registration.php?error=stmtfailed");
+     header("location: ../citizenregistration/citizenreg.php?error=stmtfailed");
      exit();
 
 
@@ -173,4 +173,144 @@ function emptyInputLogin($username , $password)
      }
 
      return $result;
+}
+
+
+//empty input validation in signup script//
+
+function emptyInputSignup($name , $email , $username , $password , $confirmpassword)
+{
+
+	$result;
+
+    if(empty($name)||empty($email)||empty($username)||empty($password)||empty($confirmpassword))
+     {
+
+       $result=true;
+
+     }
+     else
+     {
+     	$result=false;
+     }
+
+     return $result;
+}
+
+function invalidUid($username)
+{
+
+	$result;
+
+    if(!preg_match("/^[a-zA-Z0-9]*$/", $username))
+     {
+
+       $result=true;
+
+     }
+     else
+     {
+     	$result=false;
+     }
+
+     return $result;
+}
+
+
+function invalidEmail($email)
+{
+
+	$result;
+
+    if(!filter_var($email,FILTER_VALIDATE_EMAIL))
+     {
+
+       $result=true;
+
+     }
+     else
+     {
+     	$result=false;
+     }
+
+     return $result;
+}
+
+   // Creaing User //
+   function createUser($conn , $name , $username ,$email, $password,$accounttype)
+   {
+      $sql="INSERT INTO registration(name,username,email,password,usertype) VALUES (? ,? ,?,?,?);";
+
+      $stmt=mysqli_stmt_init($conn);
+
+      if(!mysqli_stmt_prepare($stmt, $sql))
+      {
+        header("location: ../citizenregistration/citizenreg.php?error=stmtfailed");
+        exit();
+
+
+      }
+
+       $hashedPwd = password_hash($password,PASSWORD_DEFAULT);
+
+
+
+
+      mysqli_stmt_bind_param($stmt, "sssss" , $name , $username  , $email , $hashedPwd , $accounttype);
+      mysqli_stmt_execute($stmt);
+      mysqli_stmt_close($stmt);
+      header("location: ../citizenregistration/citizenreg.php?error=none");
+
+
+
+
+   }
+
+
+   // Lab Signup Script Functions//
+
+   function createLabUser($conn,$name,$contact,$email,$username,$state,$district,$pincode,$proregno,$dateofreg,$password,$ownername,$personalphone,$address,$idcard)
+   {
+
+     $sql="INSERT INTO labapplications(labname,officecontact,officeemail,userid,state,district,pincode,proregno,dateofreg,password,ownername,personalphone,address,idcard) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+
+     $stmt=mysqli_stmt_init($conn);
+
+     if(!mysqli_stmt_prepare($stmt, $sql))
+     {
+       header("location: ../citizenregistration/citizenreg.php?error=stmtfailed");
+       exit();
+
+
+     }
+
+      $hashedPwd = password_hash($password,PASSWORD_DEFAULT);
+
+
+
+     mysqli_stmt_bind_param($stmt, "ssssssssssssss" , $name,$contact,$email,$username,$state,$district,$pincode,$proregno,$dateofreg,$password,$ownername,$personalphone,$address,$idcard);
+     mysqli_stmt_execute($stmt);
+     mysqli_stmt_close($stmt);
+     header("location: ../labregistration/labreg.php?error=none");
+
+   }
+
+/// Lab Registration validation Functions //
+
+function emptyInputLabSignup($name  ,$contact ,$email , $username , $state , $district, $pincode, $proregno,$dateofreg,$password,$confirmpassword,$ownername,$personalphone,$address,$idcard )
+{
+  $result;
+
+    if(empty($name)||empty($contact)||empty($email)||empty($username)||empty($state)||empty($district)||empty($pincode)||empty($proregno)||empty($dateofreg)||empty($password)||empty($confirmpassword)||empty($ownername)||empty($personalphone)||empty($address)||empty($idcard))
+     {
+
+       $result=true;
+
+     }
+     else
+     {
+     	$result=false;
+     }
+
+     return $result;  
 }
