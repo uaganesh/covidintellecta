@@ -48,7 +48,7 @@ if(!isset($_SESSION['citizen'])){ //checking session check variable
 </g></svg></span>
                 <h5 class="u-custom-font u-font-raleway u-text u-text-2">Book Your Slot</h5>
                 <p class="u-text u-text-grey-40 u-text-3" spellcheck="false">Book an RTPCR Test Slot at your nearest lat abt your convenience. Registration in the portal is mandatory for RTPCR test&nbsp;</p>
-                <a href="https://nicepage.com/website-builder" class="u-btn u-button-style u-custom-color-1 u-custom-item u-btn-1">BOOK NOW</a>
+                <a href="../slotbooking/slotbooking.php" class="u-btn u-button-style u-custom-color-1 u-custom-item u-btn-1">BOOK NOW</a>
               </div>
             </div>
             <div class="u-align-left u-container-style u-custom-item u-list-item u-radius-15 u-repeater-item u-shape-round u-white u-list-item-2">

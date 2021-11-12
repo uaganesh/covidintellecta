@@ -57,15 +57,7 @@ html {
   scroll-behavior: smooth;
 }
 
-body {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  background-color: #ffffff;
-  font-family: "Roboto", sans-serif;
-  font-size: 14px;
-  color: #848e9f;
-  overflow-x: hidden;
-}
+
 
 ::-moz-selection {
   background-color: #21cdc0;

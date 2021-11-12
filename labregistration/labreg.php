@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-<?php// include_once '../header/header.php'//?>
+<?//php include_once '../header/header.php'?>
 	<head>
 		<meta charset="utf-8">
 		<title>Lab Registration</title>
