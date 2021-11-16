@@ -58,7 +58,7 @@ body {
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 3px;
-  color: #837E7E;
+  color: #000000;
   font-family: "Roboto";
   -webkti-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -129,7 +129,7 @@ body {
 
 /*buttons*/
 .steps .action-button, .action-button {
-  width: 100px !important;
+  width: 121px !important;
   background: #7B1FA2;
   font-weight: bold;
   color: white;

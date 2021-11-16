@@ -63,7 +63,7 @@ include_once '../header/header.php'
                                     <div class="row">
                                         <div class="col-12 mb-20"><input class="form-control" type="text" name="username" placeholder="User ID / Email"></div>
                                         <div class="col-12 mb-20"><input class="form-control" type="password" name="password" placeholder="Password"></div>
-                                        <div class="col-12 mb-20"><label for="remember" class="adomx-checkbox-2"><input id="remember" type="checkbox"><i class="icon"></i>Remember.</label></div>
+                                        
                                         <div class="col-12">
                                             <div class="row justify-content-between">
                                                 <div class="col-auto mb-15"><a href="#">Forgot Password?</a></div>

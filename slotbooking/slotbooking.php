@@ -2,11 +2,34 @@
 <html lang="en" >
 
 <?php
-include_once '../header/header.php' ?>
+include_once '../header/header.php';
+include_once '../includes/dbh.php';
+
+if(!isset($_SESSION['citizen'])){ //checking session check variable
+
+    header("Location:../includes/logout.php");
+}
+?>
+
+<?php
+
+function labselect($conn)
+{
+     $output = '';
+     $sql = "SELECT * FROM approvedlabs";
+     $result = mysqli_query($conn, $sql);
+     while($row = mysqli_fetch_array($result))
+     {
+          $output .= "<option value='" . $row['labname'] . "'>" . $row['labname'] . "</option>";
+     }
+     return $output;
+}  ?>
+
 <head>
   <meta charset="UTF-8">
   <title>Slot Booking</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"><link rel="stylesheet" href="gpk.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 </head>
 <body>
@@ -30,7 +53,7 @@ include_once '../header/header.php' ?>
 </div>
 </div>
 
-<form action="hello.php" method="POST" class="steps" accept-charset="UTF-8" enctype="multipart/form-data" novalidate="">
+<form action="../includes/citizenbookingscript.php" method="POST" class="steps" accept-charset="UTF-8" enctype="multipart/form-data" >
   <ul id="progressbar">
     <li class="active">User Information</li>
     <li>Address</li>
@@ -50,7 +73,7 @@ include_once '../header/header.php' ?>
 
           <label for="firstname-99a6d115-5e68-4355-a7d0-529207feb0b3_2983">Name as on Adhaar *</label>
 
-          <input id="firstname-99a6d115-5e68-4355-a7d0-529207feb0b3_2983" name="firstname"type="text" value="" placeholder="" data-rule-required="true" data-msg-required="Please enter your name" >
+          <input id="firstname-99a6d115-5e68-4355-a7d0-529207feb0b3_2983" name="name"type="text" value="" placeholder="" data-rule-required="true" data-msg-required="Please enter your name" >
           <span class="error1" style="display: none;">
               <i class="error-log fa fa-exclamation-triangle"></i>
           </span>
@@ -60,9 +83,9 @@ include_once '../header/header.php' ?>
     <!-- Begin What's Your Email Field -->
         <div class="hs_email field hs-form-field">
 
-          <label for="email-99a6d115-5e68-4355-a7d0-529207feb0b3_2983">Contact Number*</label>
+          <label for="email-99a6d115-5e68-4355-a7d0-529207feb0b3_2983">Contact Number</label>
 
-          <input id="email-99a6d115-5e68-4355-a7d0-529207feb0b3_2983" name="contact"  type="number" value="" placeholder="" data-rule-required="true" data-msg-required="Please enter a valid contact number." >
+          <input id="email-99a6d115-5e68-4355-a7d0-529207feb0b3_2983" name="contact" title="Enter a valid contact number"  type="number" maxlength="10"  data-rule-required="true" data-msg-required="Please enter a valid contact number." >
           <span class="error1" style="display: none;">
               <i class="error-log fa fa-exclamation-triangle"></i>
           </span>
@@ -89,14 +112,14 @@ include_once '../header/header.php' ?>
 
   <!-- ACQUISITION FIELD SET -->
   <fieldset>
-    <h2 class="fs-title">Acquisition of Donors</h2>
-    <h3 class="fs-subtitle">How have you been doing in acquiring donors?</h3>
+    <h2 class="fs-title">IDENTIFICATION DETAILS</h2>
+    <h3 class="fs-subtitle">Address & Identity Confirmation</h3>
       <!-- Begin Total Number of Donors in Year 1 Field -->
         <div class="form-item webform-component webform-component-textfield hs_total_number_of_donors_in_year_1 field hs-form-field" id="webform-component-acquisition--amount-1">
 
           <label for="edit-submitted-acquisition-amount-1 total_number_of_donors_in_year_1-99a6d115-5e68-4355-a7d0-529207feb0b3_6344">Address</label>
 
-          <input id="edit-submitted-acquisition-amount-1" class="form-text hs-input" name="total_number_of_donors_in_year_1" size="60" maxlength="128" type="text" value="" placeholder="" >
+          <input id="edit-submitted-acquisition-amount-1" class="form-text hs-input" name="address" size="60" maxlength="128" type="text" value="" placeholder="" >
           <span class="error1" style="display: none;">
               <i class="error-log fa fa-exclamation-triangle"></i>
           </span>
@@ -108,7 +131,7 @@ include_once '../header/header.php' ?>
 
           <label for="edit-submitted-acquisition-amount-2 total_number_of_donors_in_year_2-99a6d115-5e68-4355-a7d0-529207feb0b3_6344">Adhaar Number</label>
 
-          <input id="edit-submitted-acquisition-amount-2" class="form-text hs-input" name="total_number_of_donors_in_year_2" required="required" size="60" maxlength="128" type="number" value="" placeholder="" required>
+          <input id="edit-submitted-acquisition-amount-2" class="form-text hs-input" name="adhaarno" maxlength="12" minlength="12" title="Enter a valid Aadhar Card Number" required="required" size="60" maxlength="128" type="number" value="" placeholder="" required>
           <span class="error1" style="display: none;">
               <i class="error-log fa fa-exclamation-triangle"></i>
           </span>
@@ -117,11 +140,14 @@ include_once '../header/header.php' ?>
 
       <!-- Begin Calc of Total Number of Donors Fields -->
       <!-- THIS FIELD IS NOT EDITABLE | GRAYED OUT -->
-        <div class="form-item webform-component webform-component-textfield webform-container-inline hs_total_donor_percent_change field hs-form-field">
+        <div class="form-item webform-component webform-component-textfield hs_total_number_of_donors_in_year_2 field hs-form-field" id="webform-component-acquisition--amount-2">
 
-          <label for="edit-submitted-acquisition-percent-change total_donor_percent_change-99a6d115-5e68-4355-a7d0-529207feb0b3_6344">Age</label>
+          <label for="edit-submitted-acquisition-amount-2 total_number_of_donors_in_year_2-99a6d115-5e68-4355-a7d0-529207feb0b3_6344">Age</label>
 
-          <input  class="form-text hs-input" name="age"  size="60" maxlength="128" type="number" >
+          <input id="edit-submitted-acquisition-amount-2" class="form-text hs-input" name="age" title="Enter a valid age"   maxlength="2" type="number" data-rule-required="true" data-msg-required="Please enter your name"   >
+          <span class="error1" style="display: none;">
+              <i class="error-log fa fa-exclamation-triangle"></i>
+          </span>
         </div>
         <!-- End Calc of Total Number of Donors Fields -->
     <input type="button" data-page="2" name="previous" class="previous action-button" value="Previous" />
@@ -133,20 +159,20 @@ include_once '../header/header.php' ?>
 
   <!-- Cultivation FIELD SET -->
   <fieldset>
-    <h2 class="fs-title">Cultivation and Nurturing your Donors</h2>
-    <h3 class="fs-subtitle">How have you been nurturing donors to get better donations?</h3>
+    <h2 class="fs-title">Testing Location</h2>
+    <h3 class="fs-subtitle">Choose Your Convinient Test Location</h3>
       <!-- Begin Average Gift Size in Year 1 Field -->
         <div class="form-item webform-component webform-component-textfield hs_average_gift_size_in_year_1 field hs-form-field" id="edit-submitted-cultivation-amount-1 average_gift_size_in_year_1-99a6d115-5e68-4355-a7d0-529207feb0b3_3256">
 
           <label for="edit-submitted-cultivation-amount-1 average_gift_size_in_year_1-99a6d115-5e68-4355-a7d0-529207feb0b3_3256">District</label>
 
 
-          <select id="edit-submitted-cultivation-amount-1" class="form-text hs-input" name="idcard" required>
+          <select  class="form-text hs-input" id="checkcheck" name="district" title="Select District"  required>
 <option value="">District</option>
 <option value="Kasargode">Kasargode</option>
 <option value="Kannur">Kannur</option>
 <option value="Kozhikode">Kozhikode</option>
-<option value="Wayanade">Wayanad</option>
+<option value="Wayanad">Wayanad</option>
 <option value="Malappuram">Malappuram</option>
 <option value="Thrissur">Thrissur</option>
 <option value="Palakkad">Palakkad</option>
@@ -170,7 +196,19 @@ include_once '../header/header.php' ?>
 
           <label for="edit-submitted-cultivation-amount-2 average_gift_size_in_year_2-99a6d115-5e68-4355-a7d0-529207feb0b3_3256">Testing Center</label>
 
-          <input id="edit-submitted-cultivation-amount-2" class="form-text hs-input" name="average_gift_size_in_year_2" required="required" size="60" maxlength="128" type="text" value="" placeholder="" data-rule-required="true" data-msg-required="Please enter a valid number">
+
+
+
+            <div  id="show_product" >
+             <select name="testingcenter" id="brand" class='form-text hs-input'>
+              <option value="">Select Lab</option>
+              <?php/* echo labselect($conn); */?>
+
+         </select>
+           </div>
+
+
+
           <span class="error1" style="display: none;">
               <i class="error-log fa fa-exclamation-triangle"></i>
           </span>
@@ -184,7 +222,7 @@ include_once '../header/header.php' ?>
           <label for="edit-submitted-cultivation-percent-change1 average_gift_size_percent_change-99a6d115-5e68-4355-a7d0-529207feb0b3_3256">Time Slot</label>
 
 
-          <select id="edit-submitted-cultivation-amount-1" class="form-text hs-input" name="idcard" required>
+          <select id="edit-submitted-cultivation-amount-1" class="form-text hs-input" name="timeslot" required>
             <option value="">Time Slot</option>
 <option value="8am-10AM">8AM-10AM</option>
 <option value="11-1pm">11AM-1PM</option>
@@ -207,54 +245,26 @@ include_once '../header/header.php' ?>
 
   <!-- RETENTION FIELD SET -->
   <fieldset>
-    <h2 class="fs-title">Retention of your donors</h2>
-    <h3 class="fs-subtitle">How long can you keep your donors and their donations?</h3>
+    <h2 class="fs-title">FINAL CONFIRMATION</h2>
+
         <!-- Begin Total Number of Donors Who Gave in Year 1 Field -->
           <div class="form-item webform-component webform-component-textfield hs_number_of_donors_in_year_1 field hs-form-field" id="webform-component-retention--amount-1">
 
-          <label for=" edit-submitted-retention-amount-1 number_of_donors_in_year_1-99a6d115-5e68-4355-a7d0-529207feb0b3_2983">What was your total number of donors who gave in year 1? *</label>
+          <label for=" edit-submitted-retention-amount-1 number_of_donors_in_year_1-99a6d115-5e68-4355-a7d0-529207feb0b3_2983">Please Carry your Aadhar Card While Going to the Test Location</label>
 
-          <input id="edit-submitted-retention-amount-1" class="form-text hs-input" name="number_of_donors_in_year_1" required="required" size="60" maxlength="128" type="number" value="" placeholder="" data-rule-required="true" data-msg-required="Please enter a valid number">
-          <span class="error1" style="display: none;">
-              <i class="error-log fa fa-exclamation-triangle"></i>
-          </span>
+
+
           </div>
         <!-- End Total Number of Donors Who Gave in Year 1 Field-->
 
 
-        <!-- Begin Total Number of Donors Who Gave in Year 1 and Year 2 Field -->
-          <div class="form-item webform-component webform-component-textfield" id="webform-component-retention--amount-2 hs_number_of_year_1_donors_who_also_gave_in_year_2 field hs-form-field">
-
-          <label for=" edit-submitted-retention-amount-2 number_of_year_1_donors_who_also_gave_in_year_2-99a6d115-5e68-4355-a7d0-529207feb0b3_2983">What was your total number of donors who gave in year 1 that also gave in year 2? *</label>
-
-          <input id="edit-submitted-retention-amount-2" class="form-text hs-input" name="number_of_year_1_donors_who_also_gave_in_year_2" required="required" size="60" maxlength="128" type="number" value="" placeholder="" data-rule-required="true" data-msg-required="Please enter a valid number">
-
-          <span class="error1" style="display: none;">
-              <i class="error-log fa fa-exclamation-triangle"></i>
-          </span>
-          </div>
-        <!-- End Total Number of Donors Who Gave in Year 1 and Year 2 Field -->
-
-        <!-- Begin Retention Rate Percent -->
-          <div class="form-item webform-component webform-component-textfield" id="webform-component-retention--percent-change field hs-form-field">
-
-          <label for="edit-submitted-retention-percent-change">Retention Rate</label>
-
-         <input id="edit-submitted-retention-percent-change" class="form-text hs-input" name="retention_rate_percent" readonly="readonly" size="60" maxlength="128" type="text" value="" placeholder="0">
-
-          <span class="error1" style="display: none;">
-              <i class="error-log fa fa-exclamation-triangle"></i>
-          </span>
-          </div>
-
-        <!-- End Retention Rate Percent -->
 
 
         <!-- Begin Final Calc -->
-          <
+
         <!-- End Final Calc -->
     <input type="button" data-page="5" name="previous" class="previous action-button" value="Previous" />
-    <input id="submit" class="hs-button primary large action-button next" type="submit" value="Submit">
+    <input id="submit" class="hs-button primary large action-button next" type="submit" value="Confirm Booking">
 
 </fieldset>
 
@@ -266,5 +276,23 @@ include_once '../header/header.php' ?>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js'></script>
 <script src='https://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/jquery.validate.js'></script><script  src="./script.js"></script>
 
+<script>
+ $(document).ready(function(){
+ console.log( "function started!" );
+      $('#checkcheck').change(function(){
+         console.log( "Working!" );
+           var brand_id = $(this).val();
+           $.ajax({
+                url:"labcheck.php",
+                method:"POST",
+                data:{brand_id:brand_id},
+                success:function(data){
+                     $('#show_product').html(data);
+                }
+           });
+      });
+ });
+ </script>
 </body>
+
 </html>
