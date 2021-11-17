@@ -269,10 +269,10 @@ function invalidEmail($email)
 
    // Lab Signup Script Functions//
 
-   function createLabUser($conn,$name,$contact,$email,$username,$state,$district,$pincode,$proregno,$dateofreg,$password,$ownername,$personalphone,$address,$idcard)
+   function createLabUser($conn,$name,$contact,$email,$username,$state,$district,$pincode,$proregno,$dateofreg,$password,$fileNameNewprovisonal,$ownername,$personalphone,$address,$idcard,$fileNameNewgovernmentid)
    {
 
-     $sql="INSERT INTO labapplications(labname,officecontact,officeemail,userid,state,district,pincode,proregno,dateofreg,password,ownername,personalphone,address,idcard) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+     $sql="INSERT INTO labapplications(labname,officecontact,officeemail,userid,state,district,pincode,proregno,dateofreg,password,provisonalcertificate,ownername,personalphone,address,idcard,governmentid) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
      $stmt=mysqli_stmt_init($conn);
 
@@ -288,7 +288,7 @@ function invalidEmail($email)
 
 
 
-     mysqli_stmt_bind_param($stmt, "ssssssssssssss" , $name,$contact,$email,$username,$state,$district,$pincode,$proregno,$dateofreg,$password,$ownername,$personalphone,$address,$idcard);
+     mysqli_stmt_bind_param($stmt, "ssssssssssssssss" , $name,$contact,$email,$username,$state,$district,$pincode,$proregno,$dateofreg,$password,$fileNameNewprovisonal,$ownername,$personalphone,$address,$idcard,$fileNameNewgovernmentid);
      mysqli_stmt_execute($stmt);
      mysqli_stmt_close($stmt);
      header("location: ../labregistration/labreg.php?error=none");

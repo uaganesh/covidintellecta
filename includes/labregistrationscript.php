@@ -17,12 +17,30 @@
   $address=$_POST['address'];
   $idcard=$_POST['idcard'];
 
+
+  require_once '../labregistration/provisonal.php';
+  require_once '../labregistration/governmentid.php';
+  require_once 'dbh.php';
+  require_once 'functions.php';
+
+
+	if($fileActualExtgovernmentid!='pdf')
+      {
+      	header("location: ../labregistration/labreg.php?error=invalidfileextgovid");
+       exit();
+      }
+
+    if($fileActualExtprovisonal!='pdf')
+      {
+      header("location: ../labregistration/labreg.php?error=invalidfileidextpro");
+
+       exit();
+      }
+
 echo $name  ,$contact ,$email , $username , $state , $district, $pincode, $proregno,$dateofreg,$password,$confirmpassword,$ownername,$personalphone,$address,$idcard;
 
-	require_once 'dbh.php';
-	require_once 'functions.php';
 
-  if (emptyInputLabSignup($name  ,$contact ,$email , $username , $state , $district, $pincode, $proregno,$dateofreg,$password,$confirmpassword,$ownername,$personalphone,$address,$idcard )!==false)
+if (emptyInputLabSignup($name  ,$contact ,$email , $username , $state , $district, $pincode, $proregno,$dateofreg,$password,$confirmpassword,$ownername,$personalphone,$address,$idcard )!==false)
   {
 
        header("location: ../labregistration/labreg.php?error=emptyinput");
@@ -62,4 +80,4 @@ if (uidExists($conn , $username , $email)!==false)
 }
 
 
- createLabUser($conn,$name,$contact,$email,$username,$state,$district,$pincode,$proregno,$dateofreg,$password,$ownername,$personalphone,$address,$idcard);
+ createLabUser($conn,$name,$contact,$email,$username,$state,$district,$pincode,$proregno,$dateofreg,$password,$fileNameNewprovisonal,$ownername,$personalphone,$address,$idcard,$fileNameNewgovernmentid);

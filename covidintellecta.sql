@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 16, 2021 at 07:35 AM
+-- Generation Time: Nov 17, 2021 at 08:06 AM
 -- Server version: 10.4.20-MariaDB
 -- PHP Version: 8.0.9
 
@@ -108,18 +108,22 @@ CREATE TABLE `labapplications` (
   `proregno` varchar(255) NOT NULL,
   `dateofreg` date NOT NULL,
   `password` varchar(255) NOT NULL,
+  `provisonalcertificate` varchar(255) NOT NULL,
   `ownername` varchar(255) NOT NULL,
   `personalphone` varchar(11) NOT NULL,
   `address` varchar(255) NOT NULL,
-  `idcard` varchar(50) NOT NULL
+  `idcard` varchar(50) NOT NULL,
+  `governmentid` varchar(255) NOT NULL,
+  `applicationstatus` varchar(50) NOT NULL DEFAULT 'PENDING'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `labapplications`
 --
 
-INSERT INTO `labapplications` (`applicationid`, `labname`, `officecontact`, `officeemail`, `userid`, `state`, `district`, `pincode`, `proregno`, `dateofreg`, `password`, `ownername`, `personalphone`, `address`, `idcard`) VALUES
-(1, 'RED CROSS', '9895702220', 'redcross@gmail.com', 'redcross123', 'Kerala', 'Kollam', '691506', 'tv181733', '0000-00-00', '1234', 'GANESH', '9895702220', 'Kalpaka, Near Railway Station', 'dog');
+INSERT INTO `labapplications` (`applicationid`, `labname`, `officecontact`, `officeemail`, `userid`, `state`, `district`, `pincode`, `proregno`, `dateofreg`, `password`, `provisonalcertificate`, `ownername`, `personalphone`, `address`, `idcard`, `governmentid`, `applicationstatus`) VALUES
+(1, 'RED CROSS', '9895702220', 'redcross@gmail.com', 'redcross123', 'Kerala', 'Kollam', '691506', 'tv181733', '0000-00-00', '1234', '', 'GANESH', '9895702220', 'Kalpaka, Near Railway Station', 'dog', '', 'PENDING'),
+(2, 'ASTER MEDICITY', '9652369874', 'SHGSH@GH.com', 'sjsjshsjh', 'Kerala', 'Kasargode', '69131', 'arun', '1996-09-05', '1234', '61949299398be0.80459596.pdf', 'sdsdsd', '254545', 'sssdsdds', 'Adhaar Card', '6194929939c3f5.79703735.pdf', 'PENDING');
 
 -- --------------------------------------------------------
 
@@ -198,7 +202,7 @@ ALTER TABLE `approvedlabs`
 -- AUTO_INCREMENT for table `labapplications`
 --
 ALTER TABLE `labapplications`
-  MODIFY `applicationid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `applicationid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `registration`

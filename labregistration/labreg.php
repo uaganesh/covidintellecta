@@ -21,7 +21,7 @@
 	<body  >
 
 		<div class="wrapper">
-            <form action="../includes/labregistrationscript.php" method="POST" id="wizard">
+            <form action="../includes/labregistrationscript.php" method="POST" id="wizard" enctype="multipart/form-data">
         		<!-- SECTION 1 -->
                 <h4></h4>
                 <section>
@@ -54,7 +54,7 @@
                         <div class="form-group">
                             <div class="form-holder">
                                 <i class="zmdi zmdi-pin"></i>
-																<select id="pet-select" class="form-controller" name="idcard" required>
+																<select id="pet-select" class="form-controller" name="district" required>
 			<option value="">District</option>
 			<option value="Kasargode">Kasargode</option>
 			<option value="Kannur">Kannur</option>
@@ -110,9 +110,10 @@
                     </div>
                     <div class="form-row">
                         <div class="form-holder w-100">
-                            <input type="file"  class="form-controller" >
-														<label for="files">Upload Provisional Certificate as PDF</label>
-                            <i class="zmdi zmdi-lock-open"></i>
+
+														<input type="file"  name="provisonal" id="provisonal" class="form-controller"  required/>
+														<label for="provisional">Upload Provisional Certificate as PDF</label>
+
                         </div>
                     </div>
 
@@ -155,9 +156,9 @@
 
                     <div class="form-row">
                         <div class="form-holder w-100">
-                            <input type="file"  class="form-controller" placeholder="New Password">
-														<label for="files">Upload Government ID Proof</label>
-                            <i class="zmdi zmdi-lock-open"></i>
+                            <input type="file"  name="governmentid" id="governmentid" class="form-controller"  required/>
+														<label for="files">Upload Government ID Proof As PDF</label>
+
                         </div>
                     </div>
 
