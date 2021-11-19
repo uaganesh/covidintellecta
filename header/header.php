@@ -99,7 +99,7 @@ else {
       <div class="collapse navbar-collapse" id="mainNavigation">
         <ul class="navbar-nav ml-auto">
           <li class="nav__item has-dropdown">
-            <a href="../index/index.php"  class="dropdown-toggle nav__item-link active">Home</a>
+            <a href="../citizendashboard/citizen.php"  class="dropdown-toggle nav__item-link active">Dashboard</a>
 
           <li class="nav__item has-dropdown">
             <a href="#" data-toggle="dropdown" class="dropdown-toggle nav__item-link">About Us</a>

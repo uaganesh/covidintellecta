@@ -5,6 +5,23 @@
 include_once '../header/header.php';
 include_once '../includes/dbh.php';
 
+$sql="SELECT * FROM activebooking WHERE  username='" . $_SESSION['username'] . "'";
+$result=mysqli_query($conn, $sql);
+$resultCheck = mysqli_num_rows($result);
+
+if($resultCheck > 0)
+    {
+       while($row = mysqli_fetch_assoc($result))
+          {
+
+if($row['status']=='PENDING')
+{
+header("Location:../errorpage/errorpage.php");
+}
+
+}
+}
+
 if(!isset($_SESSION['citizen'])){ //checking session check variable
 
     header("Location:../includes/logout.php");
@@ -24,6 +41,7 @@ function labselect($conn)
      }
      return $output;
 }  ?>
+
 
 <head>
   <meta charset="UTF-8">
@@ -79,6 +97,7 @@ function labselect($conn)
           </span>
         </div>
     <!-- End What's Your First Name Field -->
+     <input type="hidden" id="username" name="username" value="<?php echo  $_SESSION['username']; ?>" name="labname">
 
     <!-- Begin What's Your Email Field -->
         <div class="hs_email field hs-form-field">

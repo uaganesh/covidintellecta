@@ -318,10 +318,10 @@ function emptyInputLabSignup($name  ,$contact ,$email , $username , $state , $di
 
 
 // Functions for Bokking Lab slot //////
-function createApplication($conn,$name,$contact,$dob,$address,$adhaarno,$age,$district,$testingcenter,$timeslot)
+function createApplication($conn,$name,$username,$contact,$dob,$address,$adhaarno,$age,$district,$testingcenter,$timeslot)
 {
 
-  $sql="INSERT INTO activebooking(name,contact,dob,address,adhaarno,age,district,testingcenter,timeslot	) VALUES (?,?,?,?,?,?,?,?,?)";
+  $sql="INSERT INTO activebooking(name,username,contact,dob,address,adhaarno,age,district,testingcenter,timeslot	) VALUES (?,?,?,?,?,?,?,?,?,?)";
 
   $stmt=mysqli_stmt_init($conn);
 
@@ -334,7 +334,7 @@ function createApplication($conn,$name,$contact,$dob,$address,$adhaarno,$age,$di
   }
 
 
-  mysqli_stmt_bind_param($stmt, "sssssssss" , $name,$contact,$dob,$address,$adhaarno,$age,$district,$testingcenter,$timeslot);
+  mysqli_stmt_bind_param($stmt, "ssssssssss" , $name,$username,$contact,$dob,$address,$adhaarno,$age,$district,$testingcenter,$timeslot);
   mysqli_stmt_execute($stmt);
   mysqli_stmt_close($stmt);
   header("location: ../slotbooking/slotbooking.php?error=none");

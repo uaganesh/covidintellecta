@@ -2,6 +2,7 @@
 
 
   $name=$_POST['name'];
+  $username=$_POST['username'];
   $contact=$_POST['contact'];
   $dob=$_POST['dob'];
   $address=$_POST['address'];
@@ -23,7 +24,7 @@ echo $name,$contact,$dob,$address,$adhaarno,$age,$district,$testingcenter,$times
        header("location: ../slotbooking/slotbooking.php?error=emptyinput");
        exit();
   }
-  createApplication($conn,$name,$contact,$dob,$address,$adhaarno,$age,$district,$testingcenter,$timeslot);
+  createApplication($conn,$name,$username,$contact,$dob,$address,$adhaarno,$age,$district,$testingcenter,$timeslot);
 
 /*
 if (invalidUid($username)!==false)
