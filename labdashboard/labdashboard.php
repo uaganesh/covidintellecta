@@ -49,7 +49,7 @@ if(!isset($_SESSION['lab'])){ //checking session check variable
                 <h5 class="u-align-center u-text u-text-2">VErify RTPCR&nbsp;</h5>
                 <p class="u-align-center u-text u-text-3">Upload RTPCR test Result&nbsp;<br>
                 </p>
-                <a href="https://nicepage.com/k/love-html-templates" class="u-btn u-btn-round u-button-style u-custom-color-2 u-hover-palette-1-light-1 u-radius-50 u-btn-1">VERIFY</a>
+                <a href="../labbookingdashboard/labbookingdashboard.php" class="u-btn u-btn-round u-button-style u-custom-color-2 u-hover-palette-1-light-1 u-radius-50 u-btn-1">VERIFY</a>
               </div>
             </div>
             <div class="u-align-center u-container-style u-list-item u-palette-4-base u-radius-50 u-repeater-item u-shape-round u-list-item-2">

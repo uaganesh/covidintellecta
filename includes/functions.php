@@ -83,6 +83,16 @@ else if ($checkPwd===true and $GLOBALS['usertype']==='admin')
 
 else if ($checkPwd===true and $GLOBALS['usertype']==='lab')
 {
+include_once 'dbh.php';
+  $sql="SELECT labname FROM approvedlabs where userid='$username'";
+  $result=mysqli_query($conn, $sql);
+  $resultCheck = mysqli_num_rows($result);
+
+  if($resultCheck > 0)
+      {
+         while($row = mysqli_fetch_assoc($result))
+            {
+
 
    session_start();
    $_SESSION["userid"]= $uidExists["userid"];
@@ -91,8 +101,11 @@ else if ($checkPwd===true and $GLOBALS['usertype']==='lab')
    $_SESSION['lab'] = true;
    $_SESSION['username'] = $username;
    $_SESSION['check']=true;
+   $_SESSION['labname']=$row["labname"];
    header("location: ../labdashboard/labdashboard.php");
    exit();
+ }
+}
 }
 
 }
