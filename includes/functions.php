@@ -61,6 +61,7 @@ else if ($checkPwd===true  and $GLOBALS['usertype']==='citizen')
    $_SESSION['loggedin'] = true;
    $_SESSION['citizen'] = true;
    $_SESSION['username'] = $username;
+    $_SESSION['usertype'] = 'citizen';
    header("location: ../citizendashboard/citizen.php");
    exit();
    }
@@ -76,6 +77,7 @@ else if ($checkPwd===true and $GLOBALS['usertype']==='admin')
    $_SESSION['superadmin'] = true ;
    $_SESSION['username'] = $username;
    $_SESSION['check']=true;
+    $_SESSION['usertype'] = 'admin';
    header("location: ../admindashboard/admindashboard.php");
    exit();
 }
@@ -102,6 +104,7 @@ include_once 'dbh.php';
    $_SESSION['username'] = $username;
    $_SESSION['check']=true;
    $_SESSION['labname']=$row["labname"];
+   $_SESSION['usertype'] = 'lab';
    header("location: ../labdashboard/labdashboard.php");
    exit();
  }
