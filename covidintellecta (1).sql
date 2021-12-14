@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 14, 2021 at 09:22 AM
+-- Generation Time: Dec 14, 2021 at 05:07 PM
 -- Server version: 10.4.20-MariaDB
 -- PHP Version: 8.0.9
 
@@ -29,6 +29,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `activebooking` (
   `bookingid` int(11) NOT NULL,
+  `date` date NOT NULL DEFAULT current_timestamp(),
   `username` varchar(255) NOT NULL,
   `name` varchar(255) NOT NULL,
   `contact` int(11) NOT NULL,
@@ -46,9 +47,9 @@ CREATE TABLE `activebooking` (
 -- Dumping data for table `activebooking`
 --
 
-INSERT INTO `activebooking` (`bookingid`, `username`, `name`, `contact`, `dob`, `address`, `adhaarno`, `age`, `district`, `testingcenter`, `timeslot`, `status`) VALUES
-(3, 'arun', 'U A GANESH', 2147483647, '1997-09-05', 'KALPAKA , NEAR RAILWAY STATION  , KOTTARAKKARA , KOLLAM', 2147483647, 18, 'Kollam', 'KMCT', '8am-10AM', 'PENDING'),
-(6, 'sadas', 'sdaas', 989570222, '0000-00-00', 'ddccxzcs', 423423, 24, 'xdadas', 'KMCT', '', 'PENDING');
+INSERT INTO `activebooking` (`bookingid`, `date`, `username`, `name`, `contact`, `dob`, `address`, `adhaarno`, `age`, `district`, `testingcenter`, `timeslot`, `status`) VALUES
+(3, '2021-12-14', 'arun', 'U A GANESH', 2147483647, '1997-09-05', 'KALPAKA , NEAR RAILWAY STATION  , KOTTARAKKARA , KOLLAM', 2147483647, 18, 'Kollam', 'KMCT', '8am-10AM', 'COMPLETED'),
+(6, '2021-12-14', 'sadas', 'sdaas', 989570222, '0000-00-00', 'ddccxzcs', 423423, 24, 'xdadas', 'KMCT', '', 'PENDING');
 
 -- --------------------------------------------------------
 

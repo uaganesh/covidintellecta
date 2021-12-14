@@ -68,7 +68,7 @@ if(!isset($_SESSION['citizen'])){ //checking session check variable
                   <br>
                   <br>
                 </p>
-                <a href="https://nicepage.com/website-builder" class="u-border-none u-btn u-button-style u-custom-item u-palette-4-dark-1 u-btn-3">HISTORY</a>
+                <a href="../history/history.php" class="u-border-none u-btn u-button-style u-custom-item u-palette-4-dark-1 u-btn-3">HISTORY</a>
               </div>
             </div>
           </div>
