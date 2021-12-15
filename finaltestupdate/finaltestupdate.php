@@ -49,28 +49,28 @@ include_once '../includes/dbh.php'; ?>
                                        {
 ?>
             <div class="u-form u-form-1">
-              <form action="../includes/testresult.php" method="POST" onsubmit="return confirm('Test Result once submitted cannot be changed. Please Confirm before making changes.If correct please press OK');"  class="u-clearfix u-form-spacing-31 u-form-vertical u-inner-form" source="email" name="form" style="padding: 11px;">
+              <form action="../includes/testresultsubmit.php" method="POST" onsubmit="return confirm('Test Result once submitted cannot be changed. Please Confirm before making changes.If correct please press OK');"  class="u-clearfix u-form-spacing-31 u-form-vertical u-inner-form" source="email" name="form" style="padding: 11px;">
 
                 <div class="u-form-group u-form-name">
                   <label for="name-fdfb" class="u-label u-text-palette-5-dark-3 u-label-1">Booking ID</label>
-                  <input type="text" id="name-fdfb" name="name" value="<?php echo $row['bookingid']; ?>" class="u-border-2 u-border-grey-30 u-input u-input-rectangle u-white"  readonly>
+                  <input type="text" id="name-fdfb" name="bookingid" value="<?php echo $row['bookingid']; ?>" class="u-border-2 u-border-grey-30 u-input u-input-rectangle u-white"  readonly>
                 </div>
                 <div class="u-form-email u-form-group">
                   <label for="email-fdfb" class="u-label u-text-palette-5-dark-3 u-label-2">Name</label>
-                  <input type="text" id="email-fdfb" name="email" value="<?php echo $row['name']; ?>" class="u-border-2 u-border-grey-30 u-input u-input-rectangle u-white"  readonly>
+                  <input type="text" id="email-fdfb" name="name" value="<?php echo $row['name']; ?>" class="u-border-2 u-border-grey-30 u-input u-input-rectangle u-white"  readonly>
                 </div>
                 <div class="u-form-group u-form-name u-form-group-3">
                   <label for="name-1698" class="u-label u-text-palette-5-dark-3 u-label-3">Address</label>
-                  <input type="text" id="name-1698" name="name-1" value="<?php echo $row['address']; ?>" class="u-border-2 u-border-grey-30 u-input u-input-rectangle u-white" readonly>
+                  <input type="text" id="name-1698" name="address" value="<?php echo $row['address']; ?>" class="u-border-2 u-border-grey-30 u-input u-input-rectangle u-white" readonly>
                 </div>
                 <div class="u-form-group u-form-group-4">
                   <label for="text-4300" class="u-label u-text-palette-5-dark-3 u-label-4">Contact</label>
-                  <input type="text" placeholder="" id="text-4300" name="text" value="<?php echo $row['contact']; ?>" class="u-border-2 u-border-grey-30 u-input u-input-rectangle u-white" readonly>
+                  <input type="text" placeholder="" id="text-4300" name="contact" value="<?php echo $row['contact']; ?>" class="u-border-2 u-border-grey-30 u-input u-input-rectangle u-white" readonly>
                 </div>
                 <div class="u-form-group u-form-select u-form-group-5">
                   <label for="select-6722" class="u-label u-text-palette-5-dark-3 u-label-5">Test Result</label>
                   <div class="u-form-select-wrapper">
-                    <select id="select-6722" name="select" class="u-border-2 u-border-grey-30 u-input u-input-rectangle u-white" required="required">
+                    <select id="select-6722" name="testresult" class="u-border-2 u-border-grey-30 u-input u-input-rectangle u-white" required="required">
                       <option value="">Select</option>
                       <option value="Positive">Positive</option>
                       <option value="Negative">Negative</option>
@@ -79,7 +79,7 @@ include_once '../includes/dbh.php'; ?>
                   </div>
                 </div>
                 <div class="u-align-left u-form-group u-form-submit u-form-group-6">
-                  <input type="submit" value="submit" class="u-border-none u-btn u-btn-submit u-button-style u-custom-color-4 u-hover-custom-color-5 u-btn-1">
+                  <input type="submit" value="submit" name="submit" class="u-border-none u-btn u-btn-submit u-button-style u-custom-color-4 u-hover-custom-color-5 u-btn-1">
 
                 </div>
 

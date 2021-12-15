@@ -377,3 +377,29 @@ function emptyBooking($name  ,$contact ,$dob , $address , $adhaarno , $age, $dis
 
      return $result;
 }
+//-----------------------------------------------Result STatus Updating Function -------------------------------------------------//
+
+function completeResult($conn ,$bookingid,$status,$resultref ,$testresult)
+{
+  $sql="UPDATE activebooking set status=?, resultref=? , testresult=? where bookingid='$bookingid';";
+
+     $stmt=mysqli_stmt_init($conn);
+
+     if(!mysqli_stmt_prepare($stmt, $sql))
+     {
+       header("location: ../finaltestupdate/finaltestupdate.php?id='$bookingid'&stmt=stmtfailed");
+       exit();
+
+
+     }
+
+     mysqli_stmt_bind_param($stmt, "sss" , $status ,$resultref ,$testresult);
+     mysqli_stmt_execute($stmt);
+     mysqli_stmt_close($stmt);
+
+    header("location: ../labbookingdashboard/labbookingdashboard.php?error=none");
+
+       exit();
+
+
+}
