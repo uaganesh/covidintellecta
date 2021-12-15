@@ -272,7 +272,7 @@ function invalidEmail($email)
 
 
 
-      mysqli_stmt_bind_param($stmt, "sssss" , $name , $username  , $email , $hashedPwd , $accounttype);
+      mysqli_stmt_bind_param($stmt, "sssss" , $name , $username  , $email , $password , $accounttype);
       mysqli_stmt_execute($stmt);
       mysqli_stmt_close($stmt);
       header("location: ../citizenregistration/citizenreg.php?error=none");
@@ -376,4 +376,65 @@ function emptyBooking($name  ,$contact ,$dob , $address , $adhaarno , $age, $dis
      }
 
      return $result;
+}
+
+
+//------------------------------------------- aPPROVING lAB bY aDMIN /----------------------------------------------------------------------------//
+
+function approvelabapplication($conn , $name , $contact,$email,$username,$state,$district,$pincode,$proregno,$dateofreg,$password,$ownername,$personalphone,$address,$idcard,$provisonalcertificate,$governmentid,$applicationstatus,$usertype)
+{
+
+  $sql="INSERT INTO approvedlabs(labname, officecontact, officeemail, userid, state, district, pincode, proregno, dateofreg, password, ownername, personalphone, address, idcard,provisonalcertificate,governmentid,applicationstatus) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+
+  $stmt=mysqli_stmt_init($conn);
+
+  if(!mysqli_stmt_prepare($stmt, $sql))
+  {
+    header("location: ../labapplicationdetails/labapplicationdetails.php?error=stmtfailed");
+    exit();
+
+
+  }
+
+   $hashedPwd = password_hash($password,PASSWORD_DEFAULT);
+
+
+
+  mysqli_stmt_bind_param($stmt, "sssssssssssssssss" , $name , $contact,$email,$username,$state,$district,$pincode,$proregno,$dateofreg,$password,$ownername,$personalphone,$address,$idcard,$provisonalcertificate,$governmentid,$applicationstatus);
+  mysqli_stmt_execute($stmt);
+  mysqli_stmt_close($stmt);
+
+  addLabUser($conn,$name,$username,$email,$password,$usertype);
+  header("location: ../labapplicationdetails/labapplicationdetails.php?error=none");
+
+
+}
+//-------------------------------------Adding Lab User to Registration Table ---------------------------------------------------------------//
+
+function addLabUser($conn,$name,$username,$email,$password,$usertype)
+{
+  $sql="INSERT INTO registration (name,username,email,password,usertype) VALUES (?,?,?,?,?)";
+
+  $stmt=mysqli_stmt_init($conn);
+
+  if(!mysqli_stmt_prepare($stmt, $sql))
+  {
+    header("location: ../labapplicationdetails/labapplicationdetails.php?error=stmtfailed");
+    exit();
+
+
+  }
+
+   $hashedPwd = password_hash($password,PASSWORD_DEFAULT);
+
+
+
+  mysqli_stmt_bind_param($stmt, "sssss" ,$name,$username,$email,$password,$usertype);
+  mysqli_stmt_execute($stmt);
+  mysqli_stmt_close($stmt);
+
+
+
+
+
 }
