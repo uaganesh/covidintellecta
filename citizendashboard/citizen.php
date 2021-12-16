@@ -15,7 +15,23 @@ if(!isset($_SESSION['citizen'])){ //checking session check variable
     <meta name="keywords" content="Here are some options">
     <meta name="description" content="">
     <meta name="page_type" content="np-template-header-footer-from-plugin">
+     <style>
+     #error
+     {
+       color:green;
+     }
+     </style>
+    <?php
+     if(isset($_GET["error"]))
+     {
+       if($_GET["error"]=="booked")
+       {
+        echo "<p align='center' id='error'>Successfully Booked Your Test</p>";
+       }
+     } ?>
     <title>Citizen Dashboard</title>
+
+
     <link rel="stylesheet" href="nicepage.css" media="screen">
 <link rel="stylesheet" href="Copy-of-Contact-1.css" media="screen">
     <script class="u-script" type="text/javascript" src="jquery-1.9.1.min.js" defer=""></script>

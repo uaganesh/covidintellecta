@@ -3,14 +3,15 @@
 <?php
 include_once '../header/header.php';
 include_once '../includes/dbh.php';
+$username= $_SESSION['username'];
 
-$sql="SELECT * FROM activebooking WHERE  username='" . $_SESSION['username'] . "'";
+$sql="SELECT * FROM activebooking WHERE username='$username' ORDER BY bookingid DESC";
 $result=mysqli_query($conn, $sql);
 $resultCheck = mysqli_num_rows($result);
 
 if($resultCheck > 0)
     {
-       while($row = mysqli_fetch_assoc($result))
+       if($row = mysqli_fetch_assoc($result))
           {
  ?>
   <head>

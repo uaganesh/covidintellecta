@@ -353,7 +353,7 @@ function createApplication($conn,$name,$username,$contact,$dob,$address,$adhaarn
   mysqli_stmt_bind_param($stmt, "ssssssssss" , $name,$username,$contact,$dob,$address,$adhaarno,$age,$district,$testingcenter,$timeslot);
   mysqli_stmt_execute($stmt);
   mysqli_stmt_close($stmt);
-  header("location: ../slotbooking/slotbooking.php?error=none");
+  header("location: ../citizendashboard/citizen.php?error=booked");
 
 }
 
