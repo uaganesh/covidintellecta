@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 14, 2021 at 05:07 PM
+-- Generation Time: Dec 16, 2021 at 08:00 AM
 -- Server version: 10.4.20-MariaDB
 -- PHP Version: 8.0.9
 
@@ -40,16 +40,17 @@ CREATE TABLE `activebooking` (
   `district` varchar(255) NOT NULL,
   `testingcenter` varchar(255) NOT NULL,
   `timeslot` varchar(100) NOT NULL,
-  `status` varchar(100) NOT NULL DEFAULT 'PENDING'
+  `status` varchar(100) NOT NULL DEFAULT 'PENDING',
+  `testresult` varchar(30) NOT NULL,
+  `resultref` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `activebooking`
 --
 
-INSERT INTO `activebooking` (`bookingid`, `date`, `username`, `name`, `contact`, `dob`, `address`, `adhaarno`, `age`, `district`, `testingcenter`, `timeslot`, `status`) VALUES
-(3, '2021-12-14', 'arun', 'U A GANESH', 2147483647, '1997-09-05', 'KALPAKA , NEAR RAILWAY STATION  , KOTTARAKKARA , KOLLAM', 2147483647, 18, 'Kollam', 'KMCT', '8am-10AM', 'COMPLETED'),
-(6, '2021-12-14', 'sadas', 'sdaas', 989570222, '0000-00-00', 'ddccxzcs', 423423, 24, 'xdadas', 'KMCT', '', 'PENDING');
+INSERT INTO `activebooking` (`bookingid`, `date`, `username`, `name`, `contact`, `dob`, `address`, `adhaarno`, `age`, `district`, `testingcenter`, `timeslot`, `status`, `testresult`, `resultref`) VALUES
+(12, '2021-12-16', 'arun', 'ARUN BABY', 2147483647, '1995-09-05', 'VASAVAN VILASAM , KANNUR', 2147483647, 18, 'Trivandrum', 'KMCT', '8am-10AM', 'COMPLETED', 'Positive', '61bad661dc357');
 
 -- --------------------------------------------------------
 
@@ -70,36 +71,44 @@ CREATE TABLE `approvedlabs` (
   `dateofreg` date NOT NULL,
   `password` varchar(255) NOT NULL,
   `ownername` varchar(255) NOT NULL,
-  `personalphone` varchar(11) NOT NULL,
+  `personalphone` varchar(50) NOT NULL,
   `address` varchar(255) NOT NULL,
-  `idcard` varchar(50) NOT NULL
+  `idcard` varchar(50) NOT NULL,
+  `provisonalcertificate` varchar(255) NOT NULL,
+  `governmentid` varchar(255) NOT NULL,
+  `applicationstatus` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `approvedlabs`
 --
 
-INSERT INTO `approvedlabs` (`labid`, `labname`, `officecontact`, `officeemail`, `userid`, `state`, `district`, `pincode`, `proregno`, `dateofreg`, `password`, `ownername`, `personalphone`, `address`, `idcard`) VALUES
-(1, 'DDRC Laboratory', '9895702220', 'redcross@gmail.com', 'redcross123', 'Kerala', 'Trivandrum', '691506', 'tv181733', '0000-00-00', '1234', 'GANESH', '9895702220', 'Kalpaka, Near Railway Station', 'dog'),
-(2, 'Metalab', '9895702220', 'redcross@gmail.com', 'dfdf', 'Kerala', 'Kollam', '691506', 'tv181733', '0000-00-00', '1234', 'GANESH', '9895702220', 'Kalpaka, Near Railway Station', 'dog'),
-(3, 'Aster Medicity', '9895702220', 'redcross@gmail.com', 'dfdf', 'Kerala', 'Wayanad', '691506', 'tv181733', '0000-00-00', '1234', 'GANESH', '9895702220', 'Kalpaka, Near Railway Station', 'dog'),
-(4, 'KIMS', '9895702220', 'redcross@gmail.com', 'dfdfdf', 'Kerala', 'Alappuzha', '691506', 'tv181733', '0000-00-00', '1234', 'GANESH', '9895702220', 'Kalpaka, Near Railway Station', 'dog'),
-(5, 'Red Cross', '9895702220', 'redcross@gmail.com', 'redcross123', 'Kerala', 'Kottayam', '691506', 'tv181733', '0000-00-00', '1234', 'GANESH', '9895702220', 'Kalpaka, Near Railway Station', 'dog'),
-(6, 'Kannur Sentigen', '9895702220', 'redcross@gmail.com', 'kannursenti', 'Kerala', 'Kottayam', '691506', 'tv181733', '0000-00-00', '1234', 'GANESH', '9895702220', 'Kalpaka, Near Railway Station', 'dog'),
-(7, 'Vasavan ', '9895702220', 'redcross@gmail.com', 'redcross123', 'Kerala', 'Thrissur', '691506', 'tv181733', '0000-00-00', '1234', 'GANESH', '9895702220', 'Kalpaka, Near Railway Station', 'dog'),
-(8, 'Muriyil Jerry ', '9895702220', 'redcross@gmail.com', 'redcross123', 'Kerala', 'Idukki', '691506', 'tv181733', '0000-00-00', '1234', 'GANESH', '9895702220', 'Kalpaka, Near Railway Station', 'dog'),
-(9, 'Tangonics', '9895702220', 'redcross@gmail.com', 'redcross123', 'Kerala', 'Thrissur', '691506', 'tv181733', '0000-00-00', '1234', 'GANESH', '9895702220', 'Kalpaka, Near Railway Station', 'dog'),
-(10, 'Logatil', '9895702220', 'redcross@gmail.com', 'redcross123', 'Kerala', 'Kasargode', '691506', 'tv181733', '0000-00-00', '1234', 'GANESH', '9895702220', 'Kalpaka, Near Railway Station', 'dog'),
-(11, 'jeeva', '9895702220', 'redcross@gmail.com', 'redcross123', 'Kerala', 'Kannur', '691506', 'tv181733', '0000-00-00', '1234', 'GANESH', '9895702220', 'Kalpaka, Near Railway Station', 'dog'),
-(12, 'amala', '9895702220', 'redcross@gmail.com', 'redcross123', 'Kerala', 'Palakkad', '691506', 'tv181733', '0000-00-00', '1234', 'GANESH', '9895702220', 'Kalpaka, Near Railway Station', 'dog'),
-(13, 'NIMS', '9895702220', 'redcross@gmail.com', 'redcross123', 'Kerala', 'Kannur', '691506', 'tv181733', '0000-00-00', '1234', 'GANESH', '9895702220', 'Kalpaka, Near Railway Station', 'dog'),
-(14, 'KMCT', '9895702220', 'redcross@gmail.com', 'KMCT', 'Kerala', 'Kollam', '691506', 'tv181733', '0000-00-00', '1234', 'GANESH', '9895702220', 'Kalpaka, Near Railway Station', 'dog'),
-(15, 'Sree gokulam', '9895702220', 'redcross@gmail.com', 'redcross123', 'Kerala', 'Kozhikode', '691506', 'tv181733', '0000-00-00', '1234', 'GANESH', '9895702220', 'Kalpaka, Near Railway Station', 'dog'),
-(16, 'Amritha', '9895702220', 'redcross@gmail.com', 'redcross123', 'Kerala', 'Kozhikode', '691506', 'tv181733', '0000-00-00', '1234', 'GANESH', '9895702220', 'Kalpaka, Near Railway Station', 'dog'),
-(17, 'Metro scans', '9895702220', 'redcross@gmail.com', 'redcross123', 'Kerala', 'Alappuzha', '691506', 'tv181733', '0000-00-00', '1234', 'GANESH', '9895702220', 'Kalpaka, Near Railway Station', 'dog'),
-(18, 'ASTER', '9895702220', 'redcross@gmail.com', 'redcross123', 'Kerala', 'Eranakulam', '691506', 'tv181733', '0000-00-00', '1234', 'GANESH', '9895702220', 'Kalpaka, Near Railway Station', 'dog'),
-(19, 'Rajagiri', '9895702220', 'redcross@gmail.com', 'redcross123', 'Kerala', 'Kannur', '691506', 'tv181733', '0000-00-00', '1234', 'GANESH', '9895702220', 'Kalpaka, Near Railway Station', 'dog'),
-(20, 'Lakeshore', '9895702220', 'redcross@gmail.com', 'redcross123', 'Kerala', 'Malappuram', '691506', 'tv181733', '0000-00-00', '1234', 'GANESH', '9895702220', 'Kalpaka, Near Railway Station', 'dog');
+INSERT INTO `approvedlabs` (`labid`, `labname`, `officecontact`, `officeemail`, `userid`, `state`, `district`, `pincode`, `proregno`, `dateofreg`, `password`, `ownername`, `personalphone`, `address`, `idcard`, `provisonalcertificate`, `governmentid`, `applicationstatus`) VALUES
+(1, 'DDRC Laboratory', '9568745987', 'redcross@gmail.com', 'hgjhghg', 'Kerala', 'Trivandrum', '691506', 'tv181733', '0000-00-00', '1234', 'GANESH', '9895702220', 'Kalpaka, Near Railway Station', 'dog', '', '', ''),
+(2, 'Metalab', '9568745963', 'redcross@gmail.com', 'dfdf', 'Kerala', 'Kollam', '691506', 'tv181733', '0000-00-00', '1234', 'GANESH', '9895702220', 'Kalpaka, Near Railway Station', 'dog', '', '', ''),
+(3, 'Aster Medicity', '9568745974', 'redcross@gmail.com', 'dfdf', 'Kerala', 'Wayanad', '691506', 'tv181733', '0000-00-00', '1234', 'GANESH', '9895702220', 'Kalpaka, Near Railway Station', 'dog', '', '', ''),
+(4, 'KIMS', '9895702220', 'redcross@gmail.com', 'dfdfdf', 'Kerala', 'Alappuzha', '691506', 'tv181733', '0000-00-00', '1234', 'GANESH', '9895702220', 'Kalpaka, Near Railway Station', 'dog', '', '', ''),
+(5, 'Red Cross', '9895702220', 'redcross@gmail.com', 'redcross123', 'Kerala', 'Kottayam', '691506', 'tv181733', '0000-00-00', '1234', 'GANESH', '9895702220', 'Kalpaka, Near Railway Station', 'dog', '', '', ''),
+(6, 'Kannur Central', '9895702220', 'redcross@gmail.com', 'kannursenti', 'Kerala', 'Kottayam', '691506', 'tv181733', '0000-00-00', '1234', 'GANESH', '9895702220', 'Kalpaka, Near Railway Station', 'dog', '', '', ''),
+(7, 'SHERLY ', '9895702220', 'redcross@gmail.com', 'redcross123', 'Kerala', 'Thrissur', '691506', 'tv181733', '0000-00-00', '1234', 'GANESH', '9895702220', 'Kalpaka, Near Railway Station', 'dog', '', '', ''),
+(8, 'TOYSON', '9895702220', 'redcross@gmail.com', 'redcross123', 'Kerala', 'Idukki', '691506', 'tv181733', '0000-00-00', '1234', 'GANESH', '9895702220', 'Kalpaka, Near Railway Station', 'dog', '', '', ''),
+(9, 'Tangonics', '9895702220', 'redcross@gmail.com', 'redcross123', 'Kerala', 'Thrissur', '691506', 'tv181733', '0000-00-00', '1234', 'GANESH', '9895702220', 'Kalpaka, Near Railway Station', 'dog', '', '', ''),
+(10, 'Logatil', '9895702220', 'redcross@gmail.com', 'redcross123', 'Kerala', 'Kasargode', '691506', 'tv181733', '0000-00-00', '1234', 'GANESH', '9895702220', 'Kalpaka, Near Railway Station', 'dog', '', '', ''),
+(11, 'jeeva', '9895702220', 'redcross@gmail.com', 'redcross123', 'Kerala', 'Kannur', '691506', 'tv181733', '0000-00-00', '1234', 'GANESH', '9895702220', 'Kalpaka, Near Railway Station', 'dog', '', '', ''),
+(12, 'amala', '9895702220', 'redcross@gmail.com', 'redcross123', 'Kerala', 'Palakkad', '691506', 'tv181733', '0000-00-00', '1234', 'GANESH', '9895702220', 'Kalpaka, Near Railway Station', 'dog', '', '', ''),
+(13, 'NIMS', '9895702220', 'redcross@gmail.com', 'redcross123', 'Kerala', 'Kannur', '691506', 'tv181733', '0000-00-00', '1234', 'GANESH', '9895702220', 'Kalpaka, Near Railway Station', 'dog', '', '', ''),
+(14, 'KMCT', '9895702220', 'redcross@gmail.com', 'KMCT', 'Kerala', 'Trivandrum', '691506', 'tv181733', '0000-00-00', '1234', 'GANESH', '9895702220', 'Kalpaka, Near Railway Station', 'dog', '', '', ''),
+(15, 'Sree gokulam', '9895702220', 'redcross@gmail.com', 'redcross123', 'Kerala', 'Kozhikode', '691506', 'tv181733', '0000-00-00', '1234', 'GANESH', '9895702220', 'Kalpaka, Near Railway Station', 'dog', '', '', ''),
+(16, 'Amritha', '9895702220', 'redcross@gmail.com', 'redcross123', 'Kerala', 'Kozhikode', '691506', 'tv181733', '0000-00-00', '1234', 'GANESH', '9895702220', 'Kalpaka, Near Railway Station', 'dog', '', '', ''),
+(17, 'Metro scans', '9895702220', 'redcross@gmail.com', 'redcross123', 'Kerala', 'Alappuzha', '691506', 'tv181733', '0000-00-00', '1234', 'GANESH', '9895702220', 'Kalpaka, Near Railway Station', 'dog', '', '', ''),
+(18, 'ASTER', '9895702220', 'astermedicity@gmail.com', 'redcross123', 'Kerala', 'Eranakulam', '691506', 'tv181733', '0000-00-00', '1234', 'GANESH', '9895702220', 'Kalpaka, Near Railway Station', 'dog', '', '', ''),
+(19, 'Rajagiri', '9895702220', 'redcross@gmail.com', 'redcross123', 'Kerala', 'Kannur', '691506', 'tv181733', '0000-00-00', '1234', 'GANESH', '9895702220', 'Kalpaka, Near Railway Station', 'dog', '', '', ''),
+(20, 'Lakeshore', '9895702220', 'redcross@gmail.com', 'redcross123', 'Kerala', 'Malappuram', '691506', 'tv181733', '0000-00-00', '1234', 'GANESH', '9895702220', 'Kalpaka, Near Railway Station', 'dog', '', '', ''),
+(21, 'dingan', '9567858726', 'shghsg@hg.com', 'ringer666', 'Kerala', 'Kollam', '691506', 'tk154n', '1997-09-17', 'djhdjhd', 'arunser', '965478965', 'shgdh sdhd shdg', 'Aadhar', 'shgdh.pdf', 'sdhghd.pdf', 'COMPLETED'),
+(25, 'TVM NEW CENTER', '9895702220', 'redcross@gmail.com', 'simbu123', 'Kerala', 'Kollam', '691506', 'tv181733', '1998-05-12', '1234', 'GANESH', '9895702220', 'Kalpaka, Near Railway Station', 'dog', 'sdhgsjhgdshjsd.pdf', 'dfjhfjd.pdf', 'ACCEPTED'),
+(29, 'VIJAYA LAB', '9895702220', 'redcross@gmail.com', 'redcross123', 'Kerala', 'Kollam', '691506', 'tv181733', '0000-00-00', '1234', 'GANESH', '9895702220', 'Kalpaka, Near Railway Station', 'dog', '', 'dfgdg.pdf', 'ACCEPTED'),
+(30, 'TEXTER LAB', '9895702220', 'redcross@gmail.com', 'redcross123', 'Kerala', 'Kollam', '691506', 'tv181733', '0000-00-00', '1234', 'GANESH', '9895702220', 'Kalpaka, Near Railway Station', 'dog', '', 'dfgdg.pdf', 'ACCEPTED'),
+(31, 'MEDI CLINIC', '9895702220', 'redcross@gmail.com', 'redcross123', 'Kerala', 'Kollam', '691506', 'tv181733', '0000-00-00', '1234', 'GANESH', '9895702220', 'Kalpaka, Near Railway Station', 'dog', '', 'dfgdg.pdf', 'ACCEPTED');
 
 -- --------------------------------------------------------
 
@@ -121,20 +130,12 @@ CREATE TABLE `labapplications` (
   `password` varchar(255) NOT NULL,
   `provisonalcertificate` varchar(255) NOT NULL,
   `ownername` varchar(255) NOT NULL,
-  `personalphone` varchar(11) NOT NULL,
+  `personalphone` varchar(50) NOT NULL,
   `address` varchar(255) NOT NULL,
   `idcard` varchar(50) NOT NULL,
   `governmentid` varchar(255) NOT NULL,
   `applicationstatus` varchar(50) NOT NULL DEFAULT 'PENDING'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `labapplications`
---
-
-INSERT INTO `labapplications` (`applicationid`, `labname`, `officecontact`, `officeemail`, `userid`, `state`, `district`, `pincode`, `proregno`, `dateofreg`, `password`, `provisonalcertificate`, `ownername`, `personalphone`, `address`, `idcard`, `governmentid`, `applicationstatus`) VALUES
-(1, 'RED CROSS', '9895702220', 'redcross@gmail.com', 'redcross123', 'Kerala', 'Kollam', '691506', 'tv181733', '0000-00-00', '1234', '', 'GANESH', '9895702220', 'Kalpaka, Near Railway Station', 'dog', '', 'PENDING'),
-(2, 'ASTER MEDICITY', '9652369874', 'SHGSH@GH.com', 'sjsjshsjh', 'Kerala', 'Kasargode', '69131', 'arun', '1996-09-05', '1234', '61949299398be0.80459596.pdf', 'sdsdsd', '254545', 'sssdsdds', 'Adhaar Card', '6194929939c3f5.79703735.pdf', 'PENDING');
 
 -- --------------------------------------------------------
 
@@ -157,13 +158,10 @@ CREATE TABLE `registration` (
 --
 
 INSERT INTO `registration` (`regid`, `name`, `username`, `email`, `password`, `usertype`, `accountstatus`) VALUES
-(1, '', 'arun', 'arun@gmail.com', 'arun', 'citizen', 'ENABLED'),
-(2, '', 'vyshnav', 'vyshnav@gmail.com', 'vyshnav', 'lab', 'ENABLED'),
-(3, '', 'athulcp', 'athulcp@gmail.com', 'athulcp', 'admin', 'ENABLED'),
-(4, 'Kannur Sentigen', 'kannursenti', 'ganesh@gmail.com', '1234', 'lab', 'ENABLED'),
-(5, 'ARUN BABY', 'KMCT', 'arunbaby1998@gmail.com', '1234', 'lab', 'ENABLED'),
-(6, 'sdsdf', 'sdjfsj', 'sdsdfd@gdjh.com', '$2y$10$k0B8RQiihhlDpc90eMkB9uFEISWwjbaD2TtnweRf.b/tGB/noD1yS', 'citizen', 'ENABLED'),
-(7, 'Anjali', 'Anjali', 'anjali@gmail.com', '$2y$10$O6BUWFAMU8qBiG1QpSqdX.0n26qgpP1g/87Z1fyhO8mpHiAbTJ4AS', 'citizen', 'ENABLED');
+(1, '', 'arun', 'arun@gmail.com', '1234', 'citizen', 'ENABLED'),
+(3, '', 'admin', 'admin@gmail.com', '1234', 'admin', 'ENABLED'),
+(5, 'KMCT', 'KMCT', 'kmct@gmail.com', '1234', 'lab', 'ENABLED'),
+(13, 'ASTER MEDICITY', 'astermedicity', 'aster@gmail.com', '1234', 'lab', 'ENABLED');
 
 --
 -- Indexes for dumped tables
@@ -201,25 +199,25 @@ ALTER TABLE `registration`
 -- AUTO_INCREMENT for table `activebooking`
 --
 ALTER TABLE `activebooking`
-  MODIFY `bookingid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `bookingid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `approvedlabs`
 --
 ALTER TABLE `approvedlabs`
-  MODIFY `labid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `labid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 
 --
 -- AUTO_INCREMENT for table `labapplications`
 --
 ALTER TABLE `labapplications`
-  MODIFY `applicationid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `applicationid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `registration`
 --
 ALTER TABLE `registration`
-  MODIFY `regid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `regid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

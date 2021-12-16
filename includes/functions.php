@@ -377,7 +377,7 @@ function emptyBooking($name  ,$contact ,$dob , $address , $adhaarno , $age, $dis
 
      return $result;
 }
-<<<<<<< HEAD
+
 
 
 //------------------------------------------- aPPROVING lAB bY aDMIN /----------------------------------------------------------------------------//
@@ -391,7 +391,7 @@ function approvelabapplication($conn , $name , $contact,$email,$username,$state,
 
   if(!mysqli_stmt_prepare($stmt, $sql))
   {
-    header("location: ../labapplicationdetails/labapplicationdetails.php?error=stmtfailed");
+    header("location: ../labapplicationdetails/labapplicationdetails.php?error=stmt45failed");
     exit();
 
 
@@ -406,10 +406,25 @@ function approvelabapplication($conn , $name , $contact,$email,$username,$state,
   mysqli_stmt_close($stmt);
 
   addLabUser($conn,$name,$username,$email,$password,$usertype);
-  header("location: ../labapplicationdetails/labapplicationdetails.php?error=none");
+  deleteApplication($conn,$username);
+  header("location: ../labapplicationdetails/labapplicationdetails.php?error=no56ne");
 
 
 }
+//------------------------------------------Deleting data from pending Application Table------------------------------//
+function deleteApplication($conn,$username)
+{
+
+$sql="DELETE FROM labapplications WHERE userid='$username'";
+if (mysqli_query($conn, $sql)) {
+
+} else {
+    echo "Error deleting record: " . mysqli_error($conn);
+}
+mysqli_close($conn);
+
+}
+
 //-------------------------------------Adding Lab User to Registration Table ---------------------------------------------------------------//
 
 function addLabUser($conn,$name,$username,$email,$password,$usertype)
@@ -435,8 +450,8 @@ function addLabUser($conn,$name,$username,$email,$password,$usertype)
   mysqli_stmt_close($stmt);
 
 
+}
 
-=======
 //-----------------------------------------------Result STatus Updating Function -------------------------------------------------//
 
 function completeResult($conn ,$bookingid,$status,$resultref ,$testresult)
@@ -460,7 +475,7 @@ function completeResult($conn ,$bookingid,$status,$resultref ,$testresult)
     header("location: ../labbookingdashboard/labbookingdashboard.php?error=none");
 
        exit();
->>>>>>> 2aaf12070db648055cbbf52fae2a4f12c7469a0d
+
 
 
 }

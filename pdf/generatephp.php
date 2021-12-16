@@ -34,7 +34,7 @@ class PDF extends TCPDF {
         $this->SetY(-180);
         $this->LN(5);
         $this->SetFont('times', 'B', 10);
-        $this->MultiCell(189,15,'This Certificate Is legally Valid Through Out yhe Country.Authenticity of the Certificate Can Be verified at Covid Intellecta Website');
+        $this->MultiCell(189,15,'This Certificate Is legally Valid Through Out The Country.Authenticity of the Certificate Can Be verified at Covid Intellecta Website');
 
           $this->SetX(160);
         $this->cell(50,5,'Certfied By',0,0,'L',0);
@@ -48,8 +48,7 @@ class PDF extends TCPDF {
 
         // Set font
         $this->SetFont('helvetica', 'I', 8);
-        // Page number
-        $this->Cell(0, 10, 'Page '.$this->getAliasNumPage().'/'.$this->getAliasNbPages(), 0, false, 'C', 0, '', 0, false, 'T', 'M');
+
 
     }
   }
@@ -113,7 +112,7 @@ while($select=mysqli_fetch_array($query));
   $status=$select['status'];
 }*/
 
-$sql="SELECT name,address,adhaarno,status from activebooking where bookingid='" . $_GET['id'] . "'";
+$sql="SELECT * from activebooking where bookingid='" . $_GET['id'] . "'";
 
 $result=mysqli_query($conn, $sql);
  $resultCheck = mysqli_num_rows($result);
@@ -127,7 +126,7 @@ if($resultCheck > 0)
             $add=$row['address'];
             $aadhar=$row['adhaarno'];
             $status=$row['status'];
-
+            $resultd=$row['testresult'];
 
 
 $pdf->LN(20);
@@ -149,6 +148,11 @@ $pdf->SetXY(60,100);
 $pdf->cell(50,5,'STATUS',0,0,'L',0);
 $pdf->cell(80,5,$status,0,0,'L',0);
 $pdf->LN(24);
+$pdf->SetXY(60,110);
+$pdf->cell(50,5,'RESULT',0,0,'L',0);
+$pdf->cell(80,5,$resultd,0,0,'L',0);
+
+
 
    $pdf->image('http://localhost/covidintellecta/pdf/qr.php?id='.$_GET["id"].'',80,165,60,60,"png");
 

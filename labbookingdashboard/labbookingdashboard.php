@@ -120,12 +120,31 @@ align-items: center;
     <meta name="theme-color" content="#478ac9">
     <meta property="og:title" content="Home">
     <meta property="og:type" content="website">
+    <style>
+    #error
+    {
+      color:green;
+      font-weight: bold;
+
+    }
+    </style>
+
   </head>
 
 
   <body data-home-page="https://website1111395.nicepage.io/Home.html?version=6c947993-25e1-416e-8bfe-467395a9ca24" data-home-page-title="Home" class="u-body">
     <section class="u-clearfix u-section-1" id="carousel_913e">
       <div class="u-clearfix u-sheet u-sheet-1">
+        <?php
+
+         if(isset($_GET["error"]))
+         {
+           if($_GET["error"]=="none")
+           {
+            echo '<p align="center" id="error">Successfully Updated The Result</p>';
+           }
+         } ?>
+
     <?php   echo '<h2 class="u-text u-text-1">PENDING TEST FOR    '.$_SESSION["labname"].'</h2>'; ?>
         <p class="u-text u-text-2">Please find below the list of Active Booking For Today</p>
         <div class="form-popup" id="myForm">
