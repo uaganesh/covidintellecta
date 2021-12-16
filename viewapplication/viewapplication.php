@@ -53,7 +53,7 @@ if(!isset($_SESSION['check'])){ //checking session check variable
                     <h2 class="title">Application Form</h2>
                 </div>
                 <div class="card-body">
-                    <form  action="../includes/approve.php" method="POST">
+                    <form  action="../includes/adminapprovelab.php" method="POST">
 
 
                         <div class="form-row">
@@ -66,14 +66,14 @@ if(!isset($_SESSION['check'])){ //checking session check variable
                         <div class="form-row">
                             <div class="name">Contact No:</div>
                             <div class="value">
-                                <input class="input--style-6" type="text" value="<?php echo $row['officecontact']; ?>" name="name" readonly>
+                                <input class="input--style-6" type="text" value="<?php echo $row['officecontact']; ?>" name="officecontact" readonly>
                             </div>
                         </div>
 
                         <div class="form-row">
                             <div class="name"> E-mail:</div>
                             <div class="value">
-                                <input class="input--style-6" type="text" name="username" value="<?php echo $row['officeemail']; ?>" name="name" readonly>
+                                <input class="input--style-6" type="text" name="officeemail" value="<?php echo $row['officeemail']; ?>" readonly>
                             </div>
                         </div>
 
@@ -82,7 +82,7 @@ if(!isset($_SESSION['check'])){ //checking session check variable
                             <div class="name">State:</div>
                             <div class="value">
                                 <div class="input-group">
-                                    <input class="input--style-6" type="text" name="email" value="<?php echo $row['state']; ?>" >
+                                    <input class="input--style-6" type="text" name="state" value="<?php echo $row['state']; ?>" >
                                 </div>
                             </div>
                         </div>
@@ -91,7 +91,7 @@ if(!isset($_SESSION['check'])){ //checking session check variable
                             <div class="name">District:</div>
                             <div class="value">
                                 <div class="input-group">
-                                    <input class="input--style-6" type="text" name="address" value="<?php echo $row['district']; ?>" readonly>
+                                    <input class="input--style-6" type="text" name="district" value="<?php echo $row['district']; ?>" readonly>
                                 </div>
                             </div>
                         </div>
@@ -101,7 +101,7 @@ if(!isset($_SESSION['check'])){ //checking session check variable
                             <div class="name">Provisional Register NO:</div>
                             <div class="value">
                                 <div class="input-group">
-                                    <input class="input--style-6" type="text" name="contact" value="<?php echo $row['proregno']; ?>" readonly>
+                                    <input class="input--style-6" type="text" name="proregno" value="<?php echo $row['proregno']; ?>" readonly>
                                 </div>
                             </div>
                         </div>
@@ -111,7 +111,7 @@ if(!isset($_SESSION['check'])){ //checking session check variable
                             <div class="name">Date of Regn:</div>
                             <div class="value">
                                 <div class="input-group">
-                                    <input class="input--style-6" type="text" name="dob" value="<?php echo $row['dateofreg']; ?>" readonly>
+                                    <input class="input--style-6" type="text" name="dateofreg" value="<?php echo $row['dateofreg']; ?>" readonly>
                                 </div>
                             </div>
                         </div>
@@ -129,7 +129,7 @@ if(!isset($_SESSION['check'])){ //checking session check variable
                             <div class="name">Owner Name</div>
                             <div class="value">
                                 <div class="input-group">
-                                    <input class="input--style-6" type="text" name="state" value="<?php echo $row['ownername']; ?>" readonly>
+                                    <input class="input--style-6" type="text" name="ownername" value="<?php echo $row['ownername']; ?>" readonly>
                                 </div>
                             </div>
                         </div>
@@ -139,7 +139,7 @@ if(!isset($_SESSION['check'])){ //checking session check variable
                             <div class="name">Personal Phone:</div>
                             <div class="value">
                                 <div class="input-group">
-                                    <input class="input--style-6" type="text" name="pincode" value="<?php echo $row['personalphone']; ?>" readonly>
+                                    <input class="input--style-6" type="text" name="personalphone" value="<?php echo $row['personalphone']; ?>" readonly>
                                 </div>
                             </div>
                         </div>
@@ -148,7 +148,7 @@ if(!isset($_SESSION['check'])){ //checking session check variable
                             <div class="name">Address:</div>
                             <div class="value">
                                 <div class="input-group">
-                                    <input class="input--style-6" type="text" name="dob" value="<?php echo $row['address']; ?>" readonly>
+                                    <input class="input--style-6" type="text" name="address" value="<?php echo $row['address']; ?>" readonly>
                                 </div>
                             </div>
                         </div>
@@ -159,7 +159,7 @@ if(!isset($_SESSION['check'])){ //checking session check variable
                             <div class="name">ID Card Attached</div>
                             <div class="value">
                                 <div class="input-group">
-                                    <input class="input--style-6" type="text" name="dob" value="<?php echo $row['idcard']; ?>" readonly>
+                                    <input class="input--style-6" type="text" name="idcard" value="<?php echo $row['idcard']; ?>" readonly>
                                 </div>
                             </div>
                         </div>
@@ -175,9 +175,20 @@ if(!isset($_SESSION['check'])){ //checking session check variable
                             </div>
                         </div>
                 </div>
+                <input class="input--style-6" type="hidden" name="userid" value="<?php echo $row['userid']; ?>" readonly>
+                <input class="input--style-6" type="hidden" name="pincode" value="<?php echo $row['pincode']; ?>" readonly>
+                <input class="input--style-6" type="hidden" name="password" value="<?php echo $row['password']; ?>" readonly>
+                <input class="input--style-6" type="hidden" name="proregfilename" value="<?php echo $row['provisonalcertificate']; ?>" readonly>
+                <input class="input--style-6" type="hidden" name="govidfilename" value="<?php echo $row['governmentid']; ?>" readonly>
+
 <?php }
 }
 ?>
+
+
+
+
+
                 <div class="card-footer">
                     <button class="btn btn--radius-2 approve" name="approve" type="submit">Approve Application</button>
                 </div>
@@ -218,3 +229,4 @@ if(!isset($_SESSION['check'])){ //checking session check variable
 
 </html>
 <!-- end document-->
+}
