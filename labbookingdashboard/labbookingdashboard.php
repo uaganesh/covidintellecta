@@ -176,7 +176,7 @@ align-items: center;
               <?php
 
 
-                               $sql="SELECT * FROM activebooking WHERE testingcenter='{$_SESSION['labname']}'" ;
+                               $sql="SELECT * FROM activebooking WHERE testingcenter='{$_SESSION['labname']}' and status='PENDING'" ;
 
 
 
